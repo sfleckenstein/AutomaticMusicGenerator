@@ -48,7 +48,7 @@ The job of the learning agent will be to take the raw music data gathered by the
 The learning agent is to be designed and implemented in such a way as to allow it to be easily swapped out for a different algorithm. This has several benefits. First, it will be easy to implement a completely different learning algorithm if one does not produce high enough quality results. Second, this will allow for easier testing of the various components of the project. It will be easy to set up dummy functions in the learning agent to accept data from the song parser in order to verify that the parsing is happening correctly. Dummy functions can also be used to pass specific patterns to the composition agent in order to verify that the patterns are applied correctly.
 
 \subsection{Composition Agent}
-alsdjkfhasdkhf
+Stuff goes here.
 
 \section{Project Management}
 \subsection{Communication}
@@ -67,12 +67,29 @@ Another feature that may be added is a different learning algorithm. If there is
 \\
 A third feature that will be added if there is time is the ability to output the music to a Virtual Studio Technology. This would allow songs to be created that have more than one instrument. It would also allow the user or program to select what instrument they would like to use.
 
+\section{Software Requirements}
+\subsection{Song Parser}
+Stuff goes here.
+
+\subsection{Learning Agent}
+\subsubsection{Internal Architecture}
+The learning agent will have two main components. The first part will be the algorithm responsible for extracting patterns from the music. It will work by constructing a model of how it perceives a model of the music to be structured. This includes a representation of the observed outputs (pitches, note durations, chord progressions, key changes, etc) of the hidden states of the musical model. After receiving these outputs from the song parser, this algorithm will find the most useful and interesting patterns and output them.\\
+\\
+In order for the learning algorithm to work properly, it needs to be provided with estimated values of the hidden parameters in the music (i.e. the probabilities of transitioning between the hidden states). These values will come from a second algorithm, namely the Baum-Welch algorithm, which works by finding the maximum likelihood estimate of the hidden parameters, given the observed data. That is, it finds the values for the transition parameters that make the observed data most likely. 
+
+\subsubsection{Parser to Learning Agent Interface}
+In order to make the learning agent as modular as possible, the interface between it and the song parser will be kept very small, and will consist of a single call to the parser to get the raw song data. This will make it easier to swap out the learning algorithm if the need arises.
+
+\subsubsection{Learning Agent to Composition Agent Interface}
+Similar to the interface between the parser and the learning agent, this interface between the learning agent and the composition agent will be kept as small as possible. The only interaction between these two components will be when the learning agent passes the composition agent a file containing a representation of all of the relevant patterns that it found in the music.
+
+\subsection{Composition Agent}
+Stuff goes here.
+
 \nocite{*}
 
 \bibliography{References}
 \bibliographystyle{plain}
-
-\newpage
 
 \includepdf[pages=-]{Concept.pdf}
 
