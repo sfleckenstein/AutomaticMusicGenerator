@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+
+\pagenumbering{gobble}
+
+\begin{document}
+\clearpage
+\vspace*{\stretch{2}}
+\begin{center}
+\begin{minipage}{.6\textwidth}
+
+\title{Automatic Music Generator \\ \vspace{2 pt} \Large{Project Concept}}
+\author{Sam Fleckenstein and Ross Nanopoulos}
+\date{January 18, 2014}
+\maketitle
+
+\end{minipage}
+\end{center}
+\vspace{\stretch{3}}
+\clearpage
+
+\section{Background}
+Musicians have been composing music for centuries by first studying music and incorporating certain identifying aspects into their own pieces. One current problem in the field of artificial intelligence is to mimic human creativity in subjects including, but not limited to linguistics, visual fields, and music.  Because computers are inherently deterministic, generated music tends to be repetitive and, in many cases, rather boring.  This poses an especially challenging problem.
+
+\section{Scope}
+The goal of this project is to create a music creation application, which will intelligently  analyze an existing body of music, in order to create new music based on what it has learned. The music generated is not expected to be of extremely high quality, but it should at the very least be interesting. This new music should contain enough attributes found in the body of music it is based on, in order to be identified as belonging to the same genre.
+
+\section{Methodology}
+The music generator will compile statistics from a large volume of music.  It will look at a variety of attributes including:
+\begin{itemize}
+\item Beats and Rhythms
+\item Key/Time Signatures
+\item Pitches
+\item Chord progressions
+\item Note patterns
+\item Dynamics, especially changes during a single song
+\end{itemize}
+
+The two main components of the program include: 1.) the learning agent that will be responsible for listening for, and identifying relevant attributes in the music, and 2.) the generating agent that will be responsible for taking the attributes learned and applying them to create new music.
+
+\end{document}
