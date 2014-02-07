@@ -39,7 +39,7 @@ To develop an intelligent music composer that will analyze common and popular pa
 \section{Background}
 What is the process by which humans make music?  They study the fundamentals: beats, measures, time and key signatures, tempo, rhythm.  They listen to great composers: Bach, Tchaichovsky, Mahler, Debussy, Chopin.  Somehow this knowledge combined with creativity yields additional, masterful compositions.  How then, does one enable a computer to exhibit this thoughtful creativity?
 \\
-<<<<<<< HEAD
+\\
 A variety of methods have been proposed for algorithmic compositon including hidden markov models, genetic algorithms, neural networks, or a combination thereof.
 
 \section{Intended Audience}
@@ -48,16 +48,6 @@ Researchers who would like to incorporate different learning techniques for algo
 \section{Requirements}
 \subsection{Song Parser}
 The backbone of the song parser will be The Echo Nest's large database of  music intelligence.  The song parser will utilize The Echo Nest's API to extract useful song information from the database, which includes a plethora of aspects including time signature, key, mode, tempo, loudness, duration, end of fade in, start of fade out, audio fingerprints, timbre, pitch, and loudness.  Additionally, The Echo Nest provies sequenced data as "musically relevant elements" that include segments, tatums, beats, bars, and sections. This information will allow the learning agent to discern the myriad dynamics of songs and learn about the ways in which different songs are composed.
-=======
-A variety of methods have been proposed for algorithmic compositon, including hidden markov models, genetic algorithms, neural networks, or a combination thereof.  While This project focuses on hidden markov models 
-
-\section{Intended Audience}
-Researchers who would like to incorporate different learning techniques for algorithmic composition will be able to easily integrate these algorithms within this system.
-
-\section{Requirements}
-\subsection{Song Parser}
-The backbone of the song parser will be The Echo Nest's large database of music intelligence.  The song parser will utilize The Echo Nest's API to extract meaningful information from songs.  This information includes a wealth of information including time signature, key, mode, tempo, loudness, duration, end of fade in, start of fade out, audio fingerprints, timbre, pitch, and loudness.  Additionally, The Echo Nest provies sequenced data as "musically relevant elements" that include segments, tatums, beats, bars, and sections.
->>>>>>> 2d47c4e15f018c6220f39468d541e2a34b40a74a
 
 \subsection{Learning Agent}
 The job of the learning agent will be to take the raw music data gathered by the song parser and discover the relevant patterns in the music. There are a number of different algorithms that could be used to achieve this goal, but the current plan is to use a hidden Markov model to extract these patterns. This model was chosen because it can be used to represent processes where not all of the information about a state is know. This is useful because music is very complex and it is very difficult to determine every variable that goes into determining what should come next in a song. Another reason that hidden Markov models were chosen for this project is because they have been successfully applied the automatic generation of music.\\
@@ -120,8 +110,5 @@ The composition agent will take the relevant patterns provided by the learning a
 
 \includepdf[pages=-]{Concept.pdf}
 
-<<<<<<< HEAD
 \end{document}
-=======
-\end{document}
->>>>>>> 2d47c4e15f018c6220f39468d541e2a34b40a74a
+
