@@ -4,18 +4,30 @@
 \usepackage{amsfonts, amsmath}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage[final]{pdfpages}
+
+\pagenumbering{gobble}
 
 \hypersetup{
-    colorlinks,
-    linkcolor=black,
-    urlcolor=black
+    colorlinks=true,
+    linkcolor=black
 }
 
 \begin{document}
-\title{Automatic Music Generator}
-\author{Sam Fleckenstein(sef44)\\*Ross Nanopoulos(rdn21)}
+\clearpage
+\vspace*{\stretch{2}}
+\begin{center}
+\begin{minipage}{.6\textwidth}
+
+\title{Automatic Music Generator \\ \vspace{2 pt} \Large{Project Proposal}}
+\author{Sam Fleckenstein (sef44)\\*Ross Nanopoulos (rdn21)}
+\date{February 7, 2014}
 \maketitle
-\newpage
+
+\end{minipage}
+\end{center}
+\vspace{\stretch{3}}
+\clearpage
 
 \tableofcontents
 \newpage
@@ -50,6 +62,8 @@ In order to facilitate on-time delivery of the Intelligent Music Generator, in-p
 \subsection{Work Division}
 The primary responsibilities of each of the project members are as follows. Sam will be responsible for the primary development of the learning algorithms. Ross will be in charge of the implementation of the rest of the project. This is not a hard division of the work as each of the group members will also be working a great deal on the parts of the project they are not in charge of. This division of work fits well with the strengths and experience of each of the project members.
 
+\section{Completed Work}
+The work that is completed so far has been mostly research based. Various learning techniques for the learning agent have been examined before settling on using a Hidden Markov model. This model was chosen for several reasons. First, because it has been applied to various other projects with similar goals to this one. Second, because it appears to complex enough to produce interesting music, but simple enough that it will be possible to complete the project in the given timeline. In addition, pseudo-code has been written for the learning agent in order to more fully understand what will be required to implement the agent.
 
 \section{Wishlist Features}
 There are a number of features that will be included in the project if the required components are completed in time. First is some sort of user friendly UI. Currently, the only planned way of interacting with the program is through the command line. Since this method is not particularly user friendly, a UI with user controls may be added.\\
@@ -62,5 +76,9 @@ A third feature that will be added if there is time is the ability to output the
 
 \bibliography{References}
 \bibliographystyle{plain}
+
+\newpage
+
+\includepdf[pages=-]{Concept.pdf}
 
 \end{document}
