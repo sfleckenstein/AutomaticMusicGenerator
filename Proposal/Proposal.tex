@@ -20,7 +20,7 @@
 \begin{minipage}{.6\textwidth}
 
 \title{Automatic Music Generator \\ \vspace{2 pt} \Large{Project Proposal}}
-\author{Sam Fleckenstein and Ross Nanopoulos}
+\author{Sam Fleckenstein (sef44)\\*Ross Nanopoulos (rdn21)}
 \date{February 7, 2014}
 \maketitle
 
@@ -32,15 +32,20 @@
 \tableofcontents
 \newpage
 
+\section{Abstract}
+To develop an intelligent music composer that will analyze common and popular patterns in music, reason about those patterns, and generate a new piece of music that is significantly different than the analyzed pieces, while still being interesting.
+
 \section{Background}
-Stuff goes here
+What is the process by which humans make music?  They study the fundamentals: beats, measures, time and key signatures, tempo, rhythm.  They listen to great composers: Bach, Tchaichovsky, Mahler, Debussy, Chopin.  Somehow this knowledge combined with creativity yields additional, masterful compositions.  How then, does one enable a computer to exhibit this thoughtful creativity?
+\\
+A variety of methods have been proposed for algorithmic compositon, including hidden markov models, genetic algorithms, neural networks, or a combination thereof.  While This project focuses on hidden markov models 
 
 \section{Intended Audience}
-Stuff goes here
+Researchers who would like to incorporate different learning techniques for algorithmic composition will be able to easily integrate these algorithms within this system.
 
 \section{Requirements}
 \subsection{Song Parser}
-Stuff goes here
+The backbone of the song parser will be The Echo Nest's large database of music intelligence.  The song parser will utilize The Echo Nest's API to extract meaningful information from songs.  This information includes a wealth of information including time signature, key, mode, tempo, loudness, duration, end of fade in, start of fade out, audio fingerprints, timbre, pitch, and loudness.  Additionally, The Echo Nest provies sequenced data as "musically relevant elements" that include segments, tatums, beats, bars, and sections.
 
 \subsection{Learning Agent}
 The job of the learning agent will be to take the raw music data gathered by the song parser and discover the relevant patterns in the music. There are a number of different algorithms that could be used to achieve this goal, but the current plan is to use a hidden Markov model to extract these patterns. This model was chosen because it can be used to represent processes where not all of the information about a state is know. This is useful because music is very complex and it is very difficult to determine every variable that goes into determining what should come next in a song. Another reason that hidden Markov models were chosen for this project is because they have been successfully applied the automatic generation of music.\\
@@ -63,7 +68,7 @@ The work that is completed so far has been mostly research based. Various learni
 \section{Wishlist Features}
 There are a number of features that will be included in the project if the required components are completed in time. First is some sort of user friendly UI. Currently, the only planned way of interacting with the program is through the command line. Since this method is not particularly user friendly, a UI with user controls may be added.\\
 \\
-Another feature that may be added is a different learning algorithm. If there is time, something like a neural network may be added to do the learning, instead of just using a hidden Markov model.\\
+Another feature that may be added is a different learning algorithm. If there is time, neural networks or genetic algorithms may be explored and added to do the learning, instead of just using a hidden Markov model.\\
 \\
 A third feature that will be added if there is time is the ability to output the music to a Virtual Studio Technology. This would allow songs to be created that have more than one instrument. It would also allow the user or program to select what instrument they would like to use.
 
