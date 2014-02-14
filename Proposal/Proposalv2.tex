@@ -34,7 +34,7 @@
 \newpage
 
 \section{Abstract}
-To develop an intelligent music composer that will analyze common and popular patterns in music, reason about those patterns, and generate a new piece of music that is significantly different than the analyzed pieces, while still being interesting.
+The purpose of this project is to develop an intelligent music composer that will analyze common and popular patterns in music, reason about those patterns, and generate a new piece of music that is significantly different than the analyzed pieces, while still being interesting.
 
 \section{Background}
 What is the process by which humans make music? They study the fundamentals: beats, measures, time and key signatures, tempo, rhythm. They listen to great composers: Bach, Tchaichovsky, Mahler, Debussy, Chopin. Somehow this knowledge combined with creativity yields additional, masterful compositions. How then, does one enable a computer to exhibit this thoughtful creativity?\\
@@ -44,12 +44,33 @@ A variety of methods have been proposed for algorithmic compositon including hid
 \section{Intended Audience}
 Researchers who would like to incorporate different learning techniques for algorithmic composition will be able to easily integrate with this system. Additionally, anyone who would like to compose music without any talent for a musical instrument.
 
+\section{Software Specifications}
+\subsection{UI}
+\begin{enumerate}
+\item The UI will prompt the user for a musical genre
+\item The UI will prompt the user for a song tempo
+\item The UI will prompt the user for a time signature
+\item The UI will prompt the user for a key signature
+\end{enumerate}
+
+\subsection{Echo Nest Interface}
+
+
+\subsection{Learning Agent}
+
+
+\subsection{Composition Agent}
+
+
+\subsection{User Feedback}
+
+
 \section{Requirements}
 \subsection{Song Parser}
 The backbone of the song parser will be The Echo Nest's large database of music intelligence. The song parser will utilize The Echo Nest's API to extract useful song information from the database, which includes a plethora of aspects including time signature, key, mode, tempo, loudness, duration, end of fade in, start of fade out, audio fingerprints, timbre, pitch, and loudness. Additionally, The Echo Nest provies sequenced data as "musically relevant elements" that include segments, tatums, beats, bars, and sections. This information will allow the learning agent to discern the myriad dynamics of songs and learn about the ways in which different songs are composed.
 
 \subsection{Learning Agent}
-The job of the learning agent will be to take the raw music data gathered by the song parser and discover the relevant patterns in the music. There are a number of different algorithms that could be used to achieve this goal, but the current plan is to use a hidden Markov model to extract these patterns. This model was chosen because it can be used to represent processes where not all of the information about a state is known. This is useful because music is very complex and it is very difficult to determine every variable that goes into determining what should come next in a song. Another reason that hidden Markov models were chosen for this project is because they have been successfully applied the automatic generation of music.\\
+The job of the learning agent will be to take the raw music data gathered by Echo Nest and discover the relevant patterns in the music. There are a number of different algorithms that could be used to achieve this goal, but this project use a hidden Markov model to extract these patterns. This model was chosen because it can be used to represent processes where not all of the information about a state is known. This is useful because music is very complex and it is very difficult to determine every variable that goes into determining what should come next in a song. Another reason that hidden Markov models were chosen for this project is because they have been successfully applied the automatic generation of music.\\
 \\
 The learning agent is to be designed and implemented in such a way as to allow it to be easily swapped out for a different algorithm. This has several benefits. First, it will be easy to implement a completely different learning algorithm if one does not produce high enough quality results. Second, this will allow for easier testing of the various components of the project. It will be easy to set up dummy functions in the learning agent to accept data from the song parser in order to verify that the parsing is happening correctly. Dummy functions can also be used to pass specific patterns to the composition agent in order to verify that the patterns are applied correctly.
 
@@ -72,7 +93,7 @@ Github will be used for feature tracking and reporting bugs.  Pull requests will
 The primary responsibilities of each of the project members are as follows. Sam will be responsible for the primary development and implementation of the learning algorithms. Ross will be in charge of the implementation of the rest of the project. This is not a hard division of the work as each of the group members will also be working a great deal on the parts of the project they are not in charge of. This division of work fits well with the strengths and experience of each of the project members.
 
 \section{Completed Work}
-The work that is completed so far has been mostly research based. Various learning techniques for the learning agent have been examined before settling on using a Hidden Markov model. This model was chosen for several reasons. First, because it has been applied to various other projects with similar goals to this one. Second, because it appears to complex enough to produce interesting music, but simple enough that it will be possible to complete the project in the given timeline.\\
+The work that is completed so far has been mostly research based. Various learning techniques for the learning agent have been examined before settling on using a Hidden Markov model. This model was chosen for several reasons. First, because it has been applied to various other projects with similar goals to this one. Second, because it appears to be complex enough to produce interesting music, but simple enough that it will be possible to complete the project in the given timeline.\\
 \\
 Pseudo-code has been written for the learning agent in order to more fully understand what will be required to implement the agent.  Additionally, preliminary components of the parser have been designed and implemented; however, it currently only makes a call to the The Echo Nest's API with limited parameters.
 
