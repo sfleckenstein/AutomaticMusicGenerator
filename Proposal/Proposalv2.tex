@@ -15,6 +15,8 @@
     linkcolor=black
 }
 
+\makeglossaries
+
 \begin{document}
 \clearpage
 \vspace*{\stretch{2}}
@@ -33,8 +35,6 @@
 
 \tableofcontents
 \newpage
-
-\makeglossaries
 
 \newglossaryentry{name=time signature,description=notational convention to specify how many beats are in each measure.}
 \newglossaryentry{name=tempo,description=the speed or pace of a given piece and derives directly from the average beat duration.}
@@ -82,6 +82,7 @@ Below is a Gantt Chart, which will drive our development process and schedule:
 \begin{figure}[ht]
 \center{\includegraphics[width=\linewidth]{gantt.png}}
 \end{figure}
+These dates were decided by the best estimate of how long each component will take to implement.  The development of the learning and composition algorithms will take the most time and will be in continuous development; therefore, they overlap with many other aspects of the project.  The user interface will take less time to implement, and can be incorporated into other stages of development.  Additional features such as VST support will be completed towards the end of the project as time permits.
 
 \subsection{Communication}
 In order to facilitate on-time delivery of the Intelligent Music Generator, in-person meetings will be held at least once at week on Thursdays at 4:30. In addition to this, meetings will be held as necessary to discuss upcoming deadlines as well as any issues that have come up. Communication will also happen during the rest of the week primarily via email.
@@ -97,8 +98,10 @@ The work that is completed so far has been mostly research based. Various learni
 
 \section{Software Requirements}
 \subsection{The Echo Nest Interface}
-The Echo Nest API allows a user to search their catalog by a variety of methods that respond in JSON or XML.  We will be utilizing the JSON responses.  Many of the attributes in the JSON responses have confidence levels. 
+
 \subsubsection{The Echo Nest API}
+The Echo Nest API allows a user to search their catalog by a variety of methods that respond in JSON or XML, but only the JSON responses will be used.  Many of the attributes in the JSON responses have confidence levels down to the beat, which is the Echo Nest's confidence of how likely the logical beat represents a real physical beat in the song.
+
 \subsubsection{Interface Component}
 This component will interact with The Echo Nest's API and database. It will make a call using the API determined by user input. It will be fed a seed note, chord, key, or other attributes from which the parser can locate and return relevant songs. For example, the song parser could be passed in a genre of rock, with a seed note of "A", a time signature of 4/4, and a tempo of 180-200 beats per minute. This will allow the calls to The Echo Nest's API to be more specific, so that the other parts of the automatic music generator will have more specific data with which to reason. The Echo Nest's API returns JSON objects that can be passed on by the song parser, in order to be used by the learning agent in its reasoning.
 
