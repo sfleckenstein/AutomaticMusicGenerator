@@ -82,11 +82,9 @@ patterns, rhythms, etc. to incorporate into its own piece of music. It will then
 this generated music to a .wav file, which can be used later for further analysis.
 
 \section{Methodology}
-Talk about the clustering that you are/may do. How you are going to do it, how it will be useful,
-etc.\\
-\\
+\subsection{Learning Agent}
 The learning agent will use the GHMM library \cite{GHMM} to perform the required machine learning.
- This library was chosen because it offers all of the features needed to perform the required 
+This library was chosen because it offers all of the features needed to perform the required 
 learning task. It is also free, another important feature.
 
 \section{Software Design}
@@ -130,7 +128,40 @@ learning task. It is also free, another important feature.
 \end{enumerate}
 
 \section{Project Management}
-asdf
+\subsection{Communication}
+In order to facilitate on-time delivery of the Intelligent Music Generator, in-person meetings 
+will be held at least once at week on Thursdays at 4:30. In addition to this, meetings will be 
+held as necessary to discuss upcoming deadlines as well as any issues that have come up. 
+Communication will also happen during the rest of the week primarily via email.
+
+\subsection{Source Control}
+Github will be used for feature tracking and reporting bugs.  Pull requests will be utilized to 
+ensure that each member has reviewed the code before it enters the master branch.  Branches will 
+be utilized for implementing different components and features.
+
+\subsection{Work Division}
+The primary responsibilities of each of the project members are as follows. Sam will be 
+responsible for the primary development and implementation of the learning algorithms. Ross will 
+be in charge of the interface to The Echo Nest's API, as well as the development and 
+implementation of the composition algorithms. This is not a hard division of the work as each of 
+the group members will also be working a great deal on the parts of the project they are not in 
+charge of. This division of work fits well with the strengths and experience of each of the 
+project members.
+
+\subsection{Management Plan Effectiveness}
+The management plan set out in the project proposal has turned out to be very effective. The work
+of each of the team members has been neatly separated, allowing each member to progress at their
+own pace without having to rely on unfinished work from the other team member. As such, the
+project management plan will be kept the same.
+
+\subsection{Now to the End}
+Given the speed of progression, all goals set out in the previous documents should be achievable
+by the end of the semester. The wishlist feature of implementing a different learning algorithm
+will likely not happen due to the amount of research that would be required in order to create
+and implement another algorithm to do the same sort of work as GHMM. The status of the wishlist
+feature of adding in the ability to output music to a virtual studio technology is that it is
+currently unlikely to happen, but depending on the availability of pre-existing libraries to 
+assist in this, could still be implemented.
 
 \section{User Interface}
 asdf
@@ -142,9 +173,25 @@ implementation of all required features. Once all of the desired features are im
 more thorough testing procedure will be implemented to ensure the music generator works as designed.
 
 \section{Project Progress}
-asdf
+\subsection{The Echo Nest Interface}
 
-\section{Discussion and Conclusions}
+
+\subsection{Learning Agent}
+The learning agent is largely finished at this point in time. It is capable of reading in a sequence
+of notes, applying the Baum-Welch algorithm to the data, and adjusting the parameters of it's data
+model to better fit that sequence of notes.\\
+\\
+The main issue that is preventing the learning agent from being totally complete is the difficulty
+of getting GHMM to accept a sequence of objects to learn from. This problem is currently being
+handled by passing GHMM a carefully constructed string that represents each note object from a 
+sequence. This solution could potentially work be used for the rest of the project; it is just
+uglier and somewhat more difficult to read that if note objects were passed around, rather than
+their string representations.
+
+\subsection{Composition Agent}
+
+
+\section{Discussion}
 asdf
 
 \end{document}
