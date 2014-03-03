@@ -47,8 +47,7 @@ A variety of methods have been proposed for algorithmic composition including hi
 \cite{SOMETHING GOES HERE}, genetic algorithms \cite{SOMETHING GOES HERE}, and neural networks \cite{SOMETHING GOES HERE}. Additionally, a field known as ”combination theory”
 has combined these methods to create more advanced learning and composition algorithms \cite{SOMETHING GOES HERE}. Hidden
 Markov Models utilize an element of probability and uncertainty that can lead to much more interesting
-compositions \cite{SOMETHING GOES HERE}, which is the primary method of algorithmic composition that the system in this report will
-use.\\
+compositions \cite{SOMETHING GOES HERE}, which is the primary method of algorithmic composition that the system in this report will use.\\
 \\
 The argument can be made that innate creativity plays a large role in being able to compose interest-
 ing music. However, a goal of artificial intelligence is to eventually develop systems that can think and
@@ -72,8 +71,7 @@ goal, but this project use a hidden Markov model to extract these patterns. This
 it can be used to represent processes where not all of the information about a state is known. This is useful
 because music is very complex and it is very difficult to determine every variable that goes into determining
 what should come next in a song. Another reason that hidden Markov models were chosen for this project
-is because they have been successfully applied the automatic generation of music \cite{SOMETHING GOES HERE}. The complexity of a
-hidden Markov model is also very easy to expand. This can be done by looking at data that is farther in
+is because they have been successfully applied the automatic generation of music \cite{SOMETHING GOES HERE}. The complexity of a hidden Markov model is also very easy to expand. This can be done by looking at data that is farther in
 the past from the current observation, or by adding in more variables to the states you are considering
 
 \subsection{Composition Agent}
@@ -82,26 +80,28 @@ patterns, rhythms, etc. to incorporate into its own piece of music. It will then
 this generated music to a .wav file, which can be used later for further analysis.
 
 \section{Methodology}
+\subsection{The Echo Nest Interface}
+This interface utilizes pyechonest, a python wrapper for The Echo Nest's API, to collect an audio summary. During development, it was found that the actual analysis data was in a separate URL.  This analysis data contains the samples from which the learning agent learns.
 \subsection{Learning Agent}
 The learning agent will use the GHMM library \cite{GHMM} to perform the required machine learning.
 This library was chosen because it offers all of the features needed to perform the required 
-learning task. It is also free, another important feature.
+learning task. It is also free, which is another important feature.
 
 \section{Software Design}
 \subsection{UI}
 \begin{enumerate}
-\item The UI will prompt the user for a musical genre
-\item The UI will prompt the user for a song tempo
-\item The UI will prompt the user for a time signature
-\item The UI will prompt the user for a key signature
-\item The UI will send these user choices to the Echo Nest Interface
+\item The UI will prompt the user for a musical genre (COMPLETED)
+\item The UI will prompt the user for a song tempo (COMPLETED)
+\item The UI will prompt the user for a time signature (COMPLETED)
+\item The UI will prompt the user for a key signature (COMPLETED)
+\item The UI will send user choices to the Echo Nest Interface (COMPLETED)
 \end{enumerate}
 
 \subsection{The Echo Nest Interface}
 \begin{enumerate}
-\item The Echo Nest Interface will take as input the user input from the UI
-\item The Echo Nest Interface will make a call to The Echo Nest API using the user input
-\item The Echo Nest will output JSON objects to the Learning Agent
+\item The Echo Nest Interface will take as input the user input from the UI (COMPLETED)
+\item The Echo Nest Interface will make a call to The Echo Nest API using the user input (COMPLETED)
+\item The Echo Nest will output JSON objects to the Learning Agent (COMPLETED)
 \end{enumerate}
 
 \subsection{Learning Agent}
@@ -158,10 +158,7 @@ project management plan will be kept the same.
 Given the speed of progression, all goals set out in the previous documents should be achievable
 by the end of the semester. The wishlist feature of implementing a different learning algorithm
 will likely not happen due to the amount of research that would be required in order to create
-and implement another algorithm to do the same sort of work as GHMM. The status of the wishlist
-feature of adding in the ability to output music to a virtual studio technology is that it is
-currently unlikely to happen, but depending on the availability of pre-existing libraries to 
-assist in this, could still be implemented.
+and implement another algorithm to do the same sort of work as GHMM; however, clustering algorithms are currently being researched, in order to generate the sound clips for the user feedback. Clusters can provide useful information to the learning agent by making the user feedback more meaningful. The status of the wishlist feature of adding in the ability to output music to a virtual studio technology is that it is currently unlikely to happen, but depending on the availability of pre-existing libraries to assist in this, could still be implemented.
 
 \section{User Interface}
 asdf
