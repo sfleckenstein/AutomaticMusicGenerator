@@ -44,11 +44,11 @@ Chopin. Somehow this knowledge combined with creativity yields additional, maste
 then, does one enable a computer to exhibit this thoughtful creativity?\\
 \\
 A variety of methods have been proposed for algorithmic composition including hidden Markov models
-\cite{SOMETHING GOES HERE}, genetic algorithms \cite{SOMETHING GOES HERE}, and neural networks \cite{SOMETHING GOES HERE}. Additionally, a field known as ”combination theory”
-has combined these methods to create more advanced learning and composition algorithms \cite{SOMETHING GOES HERE}. Hidden
-Markov Models utilize an element of probability and uncertainty that can lead to much more interesting
-compositions \cite{SOMETHING GOES HERE}, which is the primary method of algorithmic composition that the system in this report will
-use.\\
+\cite{SOMETHING GOES HERE}, genetic algorithms \cite{SOMETHING GOES HERE}, and neural networks \cite{SOMETHING GOES HERE}. 
+Additionally, a field known as ”combination theory” has combined these methods to create more advanced learning 
+and composition algorithms \cite{SOMETHING GOES HERE}. Hidden Markov Models utilize an element of probability 
+and uncertainty that can lead to much more interesting compositions \cite{SOMETHING GOES HERE}, which is the 
+primary method of algorithmic composition that the system in this report will use.\\
 \\
 The argument can be made that innate creativity plays a large role in being able to compose interest-
 ing music. However, a goal of artificial intelligence is to eventually develop systems that can think and
@@ -72,42 +72,58 @@ goal, but this project use a hidden Markov model to extract these patterns. This
 it can be used to represent processes where not all of the information about a state is known. This is useful
 because music is very complex and it is very difficult to determine every variable that goes into determining
 what should come next in a song. Another reason that hidden Markov models were chosen for this project
-is because they have been successfully applied the automatic generation of music \cite{SOMETHING GOES HERE}. The complexity of a
-hidden Markov model is also very easy to expand. This can be done by looking at data that is farther in
+is because they have been successfully applied the automatic generation of music \cite{SOMETHING GOES HERE}.
+The complexity of a hidden Markov model is also very easy to expand. This can be done by looking at data that is farther in
 the past from the current observation, or by adding in more variables to the states you are considering
 
 \subsection{Composition Agent}
 The composition agent will take the information that the learning agent provides and decide which notes,
 patterns, rhythms, etc. to incorporate into its own piece of music. It will then be responsible for outputting
-this generated music to a .wav file, which can be used later for further analysis.
+this generated music to a .wav file, which can be used later for further analysis and classification.
 
 \section{Methodology}
+\subsection{The Echo Nest Interface}
+This interface utilizes pyechonest, a python wrapper for The Echo Nest's Main API, in order to collect an 
+audio summary, which contains the basic information for a song such as the key, mode, tempo, time signature, 
+and an analysis url. This analysis URL is where the sequenced data for each song lives. This sequenced datea
+can be easily accessed via The Echo Nest's Remix API; therefore, this interface only needs to pass a list of
+track IDs to the learning agent.
+
 \subsection{Learning Agent}
-The learning agent will use the GHMM library \cite{GHMM} to perform the required machine learning.
-This library was chosen because it offers all of the features needed to perform the required 
-learning task. It is also free, another important feature.
+The learning agent will use the GHMM library \cite{GHMM} to perform the required machine learning on the 
+patterns within the sequenced data for which a user rates highly. This library was chosen because it offers 
+all of the features needed to perform the required learning task. It is also free, which is another important 
+feature.
 
 \section{Software Design}
 \subsection{UI}
 \begin{enumerate}
-\item The UI will prompt the user for a musical genre
-\item The UI will prompt the user for a song tempo
-\item The UI will prompt the user for a time signature
-\item The UI will prompt the user for a key signature
-\item The UI will send these user choices to the Echo Nest Interface
+\item The UI will prompt the user for a musical genre (COMPLETED)
+\item The UI will prompt the user for a song tempo (COMPLETED)
+\item The UI will prompt the user for a time signature (COMPLETED)
+\item The UI will prompt the user for a key signature (COMPLETED)
+\item The UI will send user choices to the Echo Nest Interface (COMPLETED)
 \end{enumerate}
 
 \subsection{The Echo Nest Interface}
 \begin{enumerate}
-\item The Echo Nest Interface will take as input the user input from the UI
-\item The Echo Nest Interface will make a call to The Echo Nest API using the user input
-\item The Echo Nest will output JSON objects to the Learning Agent
+\item The Echo Nest Interface will take as input the user input from the UI (COMPLETED)
+\item The Echo Nest Interface will make a call to The Echo Nest API using the user input (COMPLETED)
+\item The Echo nest will provide a list of track IDs to be utilized by the learning agent (COMPLETED)
+\end{enumerate}
+
+\subsection{User Feedback}
+\begin{enumerate}
+\item The user will be prompted to rate a number of short song clips
+\item The user ratings will be tabulated and used to update the learned model based on which musical patterns the user rated highest
+\item The user will be presented with one longer song based on the updated musical model
 \end{enumerate}
 
 \subsection{Learning Agent}
 \begin{enumerate}
 \item The learning agent will use the GHMM library
-\item The learning agent will take as input JSON objects from the Echo Nest Interface
+\item The learning agent will take as input track IDs from the Echo Nest interface
+\item The learning agent will utilize The Echo Nest's Remix API \cite{Remix} to access sequenced data from track IDs
 \item The learning agent will train a model \cite{GHMM} using the GHMM library and the input from the Echo Nest Interface
 \item The learning agent will output a trained model to the composition agent
 \end{enumerate}
@@ -120,19 +136,13 @@ learning task. It is also free, another important feature.
 \item The composition agent will write the resulting composition to disk as a .wav file
 \end{enumerate}
 
-\subsection{User Feedback}
-\begin{enumerate}
-\item The user will be prompted to rate a number of short song clips
-\item The user ratings will be tabulated and used to update the learned model based on which musical patterns the user rated highest
-\item The user will be presented with one longer song based on the updated musical model
-\end{enumerate}
-
 \section{Project Management}
 \subsection{Communication}
 In order to facilitate on-time delivery of the Intelligent Music Generator, in-person meetings 
 will be held at least once at week on Thursdays at 4:30. In addition to this, meetings will be 
 held as necessary to discuss upcoming deadlines as well as any issues that have come up. 
 Communication will also happen during the rest of the week primarily via email.
+
 
 \subsection{Source Control}
 Github will be used for feature tracking and reporting bugs.  Pull requests will be utilized to 
@@ -151,20 +161,32 @@ project members.
 \subsection{Management Plan Effectiveness}
 The management plan set out in the project proposal has turned out to be very effective. The work
 of each of the team members has been neatly separated, allowing each member to progress at their
-own pace without having to rely on unfinished work from the other team member. As such, the
-project management plan will be kept the same.
+own pace without having to rely on unfinished work from the other team member. 
+
+The communication method has been an effective way of keeping on track to complete assigned tasks. 
+It has also allowed questions to be asked more frequently, so that getting stuck on one particular 
+challenge for too long is not an issue.
+
+In regards to version control, when the project started, merging commits were a problem due to constantly 
+changing and moving parts. This has been resolved, however, and merging has become a much smoother process.
+
+As such, the project management plan will be kept the same.
 
 \subsection{Now to the End}
 Given the speed of progression, all goals set out in the previous documents should be achievable
 by the end of the semester. The wishlist feature of implementing a different learning algorithm
-will likely not happen due to the amount of research that would be required in order to create
-and implement another algorithm to do the same sort of work as GHMM. The status of the wishlist
-feature of adding in the ability to output music to a virtual studio technology is that it is
-currently unlikely to happen, but depending on the availability of pre-existing libraries to 
-assist in this, could still be implemented.
+within the learning agent will likely not happen due to the amount of research that would be 
+required in order to create and implement another algorithm to do the same sort of work as GHMM; 
+however, clustering algorithms are currently being researched, in order to generate the sound 
+clips for the user feedback. Once clusters are identified and classified, they can provide useful 
+information to the learning agent by making the user feedback more meaningful. The status of the 
+wishlist feature of adding in the ability to output music to a virtual studio technology is that 
+it is currently unlikely to happen, but depending on the ease-of-use of pre-existing libraries 
+to assist in this, could still be implemented.
 
 \section{User Interface}
-asdf
+The user interface will be implemented as a web application. Below are screenshots:
+***********Will include more here once I draw these up****************************
 
 \section{Testing and Evaluation}
 The testing is currently all manual. Each of the developers is responsible for testing all of their
@@ -174,7 +196,8 @@ more thorough testing procedure will be implemented to ensure the music generato
 
 \section{Project Progress}
 \subsection{The Echo Nest Interface}
-
+The Echo Nest interface is completely finished.  It is capabale of making a call to the Echo Nest's API and
+returning a list of song IDs for the learning agent to utilize.
 
 \subsection{Learning Agent}
 The learning agent is largely finished at this point in time. It is capable of reading in a sequence
@@ -189,7 +212,12 @@ uglier and somewhat more difficult to read that if note objects were passed arou
 their string representations.
 
 \subsection{Composition Agent}
+The composition agent has not been started, and will be the primary focus of the next phase in development.
 
+\subsection{User Interface}
+A basic, but functional user interface has been created that takes in genre, tempo, key signature, and time
+signature from the user and passes those parameters to the Echo Nest interface. The user is then redirected
+to a page where she will provide ratings of songs that the learning agent can utilize in its learning.
 
 \section{Discussion}
 asdf
