@@ -1,0 +1,32 @@
+\BOOKMARK [1][-]{section.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.2}{Background}{}% 2
+\BOOKMARK [1][-]{section.3}{Intended Audience}{}% 3
+\BOOKMARK [1][-]{section.4}{Architecture Design}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{The Echo Nest Interface}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Learning Agent}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Composition Agent}{section.4}% 7
+\BOOKMARK [1][-]{section.5}{Project Management}{}% 8
+\BOOKMARK [2][-]{subsection.5.1}{Communication}{section.5}% 9
+\BOOKMARK [2][-]{subsection.5.2}{Source Control}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.3}{Work Division}{section.5}% 11
+\BOOKMARK [1][-]{section.6}{Completed Work}{}% 12
+\BOOKMARK [1][-]{section.7}{Software Requirements}{}% 13
+\BOOKMARK [2][-]{subsection.7.1}{The Echo Nest Interface}{section.7}% 14
+\BOOKMARK [3][-]{subsubsection.7.1.1}{The Echo Nest API}{subsection.7.1}% 15
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Interface Component}{subsection.7.1}% 16
+\BOOKMARK [2][-]{subsection.7.2}{Learning Agent}{section.7}% 17
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Internal Architecture}{subsection.7.2}% 18
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Parser to Learning Agent Interface}{subsection.7.2}% 19
+\BOOKMARK [3][-]{subsubsection.7.2.3}{Learning Agent to Composition Agent Interface}{subsection.7.2}% 20
+\BOOKMARK [2][-]{subsection.7.3}{Composition Agent}{section.7}% 21
+\BOOKMARK [1][-]{section.8}{Software Specifications}{}% 22
+\BOOKMARK [2][-]{subsection.8.1}{UI}{section.8}% 23
+\BOOKMARK [2][-]{subsection.8.2}{The Echo Nest Interface}{section.8}% 24
+\BOOKMARK [2][-]{subsection.8.3}{Learning Agent}{section.8}% 25
+\BOOKMARK [2][-]{subsection.8.4}{Composition Agent}{section.8}% 26
+\BOOKMARK [2][-]{subsection.8.5}{User Feedback}{section.8}% 27
+\BOOKMARK [1][-]{section.9}{Wishlist Features}{}% 28
+\BOOKMARK [1][-]{section.10}{Project Challenges}{}% 29
+\BOOKMARK [2][-]{subsection.10.1}{User Feedback}{section.10}% 30
+\BOOKMARK [2][-]{subsection.10.2}{Extracting Patterns}{section.10}% 31
+\BOOKMARK [1][-]{section.11}{Glossary}{}% 32
