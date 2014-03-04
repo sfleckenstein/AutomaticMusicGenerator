@@ -88,7 +88,7 @@ this generated music to a .wav file, which can be used later for further analysi
 \subsection{The Echo Nest Interface}
 This interface utilizes pyechonest, a python wrapper for The Echo Nest's Main API, in order to collect an 
 audio summary, which contains the basic information for a song such as the key, mode, tempo, time signature, 
-and an analysis url. This analysis URL is where the sequenced data for each song lives. This sequenced datea
+and an analysis URL (i.e. where the sequenced data for each song lives). The sequenced datea
 can be easily accessed via The Echo Nest's Remix API; therefore, this interface only needs to pass a list of
 track IDs to the learning agent.
 
@@ -117,7 +117,7 @@ feature.
 
 \subsection{User Feedback}
 \begin{enumerate}
-\item The user will be prompted to rate a number of short song clips
+\item The user will be prompted to rate a number of short song clips (IN PROGRESS)
 \item The user ratings will be tabulated and used to update the learned model based on which musical patterns the user rated highest
 \item The user will be presented with one longer song based on the updated musical model
 \end{enumerate}
