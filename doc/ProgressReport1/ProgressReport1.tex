@@ -6,8 +6,9 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage[final]{pdfpages}
 
-\pagenumbering{gobble}
+%\pagenumbering{gobble}
 
 \hypersetup{
 	colorlinks=true,
@@ -74,7 +75,7 @@ goal, but this project use a hidden Markov model to extract these patterns. This
 it can be used to represent processes where not all of the information about a state is known. This is useful
 because music is very complex and it is very difficult to determine every variable that goes into determining
 what should come next in a song. Another reason that hidden Markov models were chosen for this project
-is because they have been successfully applied the automatic generation of music \cite{SOMETHING GOES HERE}.
+is because they have been successfully applied the automatic generation of music \cite{5492670}.
 The complexity of a hidden Markov model is also very easy to expand. This can be done by looking at data that is farther in
 the past from the current observation, or by adding in more variables to the states you are considering
 
@@ -123,19 +124,19 @@ feature.
 
 \subsection{Learning Agent}
 \begin{enumerate}
-\item The learning agent will use the GHMM library
+\item The learning agent will use the GHMM library (COMPLETED)
 \item The learning agent will take as input track IDs from the Echo Nest interface
 \item The learning agent will utilize The Echo Nest's Remix API \cite{Remix} to access sequenced data from track IDs
-\item The learning agent will train a model \cite{GHMM} using the GHMM library and the input from the Echo Nest Interface
-\item The learning agent will output a trained model to the composition agent
+\item The learning agent will train a model \cite{GHMM} using the GHMM library and the input from the Echo Nest Interface (COMPLETED)
+\item The learning agent will output a trained model to the composition agent (COMPLETED)
 \end{enumerate}
 
 \subsection{Composition Agent}
 \begin{enumerate}
-\item The composition agent will take as input a trained model from the learning agent
+\item The composition agent will take as input a trained model from the learning agent (COMPLETED)
 \item The composition agent will create an overarching chord progression
 \item The composition agent will then fill in notes using the trained model
-\item The composition agent will write the resulting composition to disk as a .wav file
+\item The composition agent will write the resulting composition to disk as a .wav file (IN PROGRESS)
 \end{enumerate}
 
 \section{Project Management}
@@ -156,7 +157,7 @@ The primary responsibilities of each of the project members are as follows. Sam 
 responsible for the primary development and implementation of the learning algorithms. Ross will 
 be in charge of the interface to The Echo Nest's API, as well as the development and 
 implementation of the composition algorithms. This is not a hard division of the work as each of 
-the group members will also be working a great deal on the parts of the project they are not in 
+the group members will also be working a great deal on the parts of the project they are not in
 charge of. This division of work fits well with the strengths and experience of each of the 
 project members.
 
@@ -239,9 +240,28 @@ signature from the user and passes those parameters to the Echo Nest interface. 
 to a page where she will provide ratings of songs that the learning agent can utilize in its learning.
 
 \section{Discussion}
-asdf
+As previously discussed, the project is on pace to be completed by the end of the semester. There
+have been various minor issues, but workarounds have been found for all of them, and as such, no
+major changes have been made to the scope of the project.
+
+\newpage
+
+\section{Appendices}
+\subsection{Database Design}
+As there is not a large quantity of data to be saved for this project, there is no associated 
+database.
+
+\subsection{User Manual}
+Given the incomplete nature of the project at this point, a user manual is not appropriate.
+
+\subsection{Programmer Manual}
+Given the incomplete nature of the project at this point, a programmer manual is not appropriate.
+
+\newpage
 
 \bibliography{References}
 \bibliographystyle{plain}
+
+\includepdf[pages=-]{Proposal.pdf}
 
 \end{document}
