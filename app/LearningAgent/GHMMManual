@@ -1,0 +1,21 @@
+I wrote this looking at the tutorial at ghmm.org, under documentation.
+
+
+sigma is the alphabet of the language in question. In the case of this example,
+it is all of the possible outcomes of a die roll.
+
+efair and eloaded have to have the same number of columns for B to make sense.
+
+pi has to have the same number of columns as you have different states (I
+think). In this case, there are two different states and pi has two columns.
+
+The emission matrix (B) has to have the same number of rows as the transmission
+matrix.
+The emission matrix (B) has to have the same number of rows as there are states.
+The emission matrix must have the same number of rows as there are values in
+the alphabet.
+
+The transition matrix (A) must be square (duh).
+The rows in the transition matrix must sum to 1.
+The rows in the emission matrix must sum to 1.
+
