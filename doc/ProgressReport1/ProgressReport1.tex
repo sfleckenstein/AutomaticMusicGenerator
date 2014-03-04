@@ -5,6 +5,7 @@
 \usepackage{amsfonts, amsmath}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{float}
 
 \pagenumbering{gobble}
 
@@ -96,7 +97,7 @@ all of the features needed to perform the required learning task. It is also fre
 feature.
 
 \section{Software Design}
-\subsection{UI}
+\subsection{User Interface}
 \begin{enumerate}
 \item The UI will prompt the user for a musical genre (COMPLETED)
 \item The UI will prompt the user for a song tempo (COMPLETED)
@@ -185,8 +186,24 @@ it is currently unlikely to happen, but depending on the ease-of-use of pre-exis
 to assist in this, could still be implemented.
 
 \section{User Interface}
-The user interface will be implemented as a web application. Below are screenshots:
-***********Will include more here once I draw these up****************************
+The user interface will be implemented as a basic web application. First the user will be prompted 
+to choose a genre, tempo, time signature, and key signature.  The user will click begin, and will 
+be played short sound clips, which can be rated 1 to 4 (this will be updated to words, once it is 
+decided which will provide a better user experience).  After the default number of music clips, the 
+user can choose to rate more music clips or compose a song.  
+Below are screen shots of the application flow:
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=10cm]{begin.png}}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=10cm]{pref.png}}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=10cm]{compose.png}}
+\end{figure}
 
 \section{Testing and Evaluation}
 The testing is currently all manual. Each of the developers is responsible for testing all of their
@@ -196,8 +213,9 @@ more thorough testing procedure will be implemented to ensure the music generato
 
 \section{Project Progress}
 \subsection{The Echo Nest Interface}
-The Echo Nest interface is completely finished.  It is capabale of making a call to the Echo Nest's API and
-returning a list of song IDs for the learning agent to utilize.
+The Echo Nest interface is completely finished.  It is capabale of making a call to the Echo Nest's API using the 
+user input and returning a list of song IDs, which the learning agent can utilize when it gathers user preferences
+in the music clip rating portion of the application.
 
 \subsection{Learning Agent}
 The learning agent is largely finished at this point in time. It is capable of reading in a sequence
