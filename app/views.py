@@ -4,4 +4,4 @@ from forms import ChoiceForm
 
 @app.route('/')
 def index():
-    return render_template("index.html", title='Intelligent Music', form=ChoiceForm())
+    return render_template("index.html", title='Intelligent Music Generator', form=ChoiceForm())
