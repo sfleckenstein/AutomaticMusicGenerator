@@ -5,14 +5,14 @@ from Note import Note
 def getNoteSeq():
     # Define all of the notes we will see
     # This will eventually be generated from the data received from The Echo Nest
-    c_3 = Note('c_3', 10)
-    d_3 = Note('f_3', 10)
-    e_3 = Note('e_3', 10)
-    f_3 = Note('f_3', 10)
-    g_3 = Note('g_3', 10)
-    a_3 = Note('a_3', 10)
-    b_3 = Note('b_3', 10)
-    c_4 = Note('c_4', 10)
+    c_3 = Note('c_3', 010)
+    d_3 = Note('f_3', 010)
+    e_3 = Note('e_3', 010)
+    f_3 = Note('f_3', 010)
+    g_3 = Note('g_3', 010)
+    a_3 = Note('a_3', 010)
+    b_3 = Note('b_3', 010)
+    c_4 = Note('c_4', 010)
     
     # This tells GHMM every possible value that it will be seeing
     alphabet = ghmm.Alphabet(
