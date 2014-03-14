@@ -155,3 +155,4 @@ class Note:
     @staticmethod
     def getDuration(note):
         return note[-3:]
+
