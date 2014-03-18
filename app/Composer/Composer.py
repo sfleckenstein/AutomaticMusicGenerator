@@ -1,40 +1,29 @@
-from LearningAgent.Note import * 
+from LearningAgent.Note import Note 
 from midiutil.MidiFile import MIDIFile
 
 def compose(notes):
-	midi = MIDIFile(1)
+    midi = MIDIFile(1)
 
-	time = 0	
-	track = 0
-	
-	midi.addTrackName(track, time, "Test Track")
-	midi.addTempo(track, time, 120)
+    time = 0    
+    track = 0
+    
+    midi.addTrackName(track, time, "Test Track")
+    midi.addTempo(track, time, 120)
 
-	track = 0
-	channel = 0
-	pitch = 60
-	time = 0
-	duration = 1
-	volume = 127 
+    track = 0
+    channel = 0
+    pitch = 60
+    time = 0
+    duration = 1
+    volume = 127 
 
-	midi.addNote(track, channel, pitch, time, duration, volume)
-	
-	pitch += 1
-	time += 2
-	midi.addNote(track, channel, pitch, time, duration, volume)
+    for note in notes:
+       duration = int(Note.getDuration(note))
+       pitch = Note.getPitch(note)
 
-	pitch += 1
-	time += 2
-	midi.addNote(track, channel, pitch, time, duration, volume)
-	
-	pitch += 1
-	time += 2
-	midi.addNote(track, channel, pitch, time, duration, volume)
-	
-	pitch += 1
-	time += 2
-	midi.addNote(track, channel, pitch, time, duration, volume)
-	
-	binfile = open("output.mid", 'wb')
-	midi.writeFile(binfile)
-	binfile.close()
+       midi.addNote(track, channel, pitch, time, duration, volume)
+       time += duration
+
+    binfile = open("output.mid", 'wb')
+    midi.writeFile(binfile)
+    binfile.close()
