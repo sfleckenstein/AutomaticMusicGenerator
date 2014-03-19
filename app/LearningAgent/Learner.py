@@ -2,7 +2,7 @@ import ghmm
 
 from Note import Note
 
-def getNoteSeq():
+def get_note_seq():
     # Define all of the notes we will see
     # This will eventually be generated from the data received from The Echo Nest
     notes = []

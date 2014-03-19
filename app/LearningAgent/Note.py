@@ -16,7 +16,7 @@ class Note:
     #TODO pretty sure static method is not the Python way to do this,
     # but I can't figure out the right way currently
     @staticmethod
-    def getPitch(note):
+    def get_pitch(note):
         return {
             'a_0' : 21,
             'a#_0': 22,
@@ -153,6 +153,6 @@ class Note:
          }[note[:-3]]
     
     @staticmethod
-    def getDuration(note):
+    def get_duration(note):
         return note[-3:]
 

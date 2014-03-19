@@ -19,8 +19,8 @@ def compose(notes):
     volume = 127
 
     for note in notes:
-        duration = int(Note.getDuration(note))
-        song.addNote(track, channel, Note.getPitch(note), time, duration, volume)
+        duration = int(Note.get_duration(note))
+        song.addNote(track, channel, Note.get_pitch(note), time, duration, volume)
         time += duration
 
     binfile = open("output.mid", 'wb')
