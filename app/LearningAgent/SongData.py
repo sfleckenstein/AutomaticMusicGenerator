@@ -1,4 +1,6 @@
 class SongData:
+    """A container to hold all the useful info about songs"""
+
     def __init__(self, bar_starts, bar_durations,
                       beat_starts, beat_durations,
                       tatum_starts, tatum_durations,

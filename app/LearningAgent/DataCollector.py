@@ -6,6 +6,9 @@ import SongData
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
 def collect_data(song_ids):
+    """Input: a list of song IDs
+       Output: a list of SongData objects fulled with useful information about the songs"""
+
     song_data = []
 
     for i in range(0, len(song_ids)):
