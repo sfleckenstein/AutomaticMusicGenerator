@@ -9,17 +9,17 @@
 
 **Install virtualenv:**
     
-        sudo pip install virtualenv
+    sudo pip install virtualenv
 
-        **Create the virtual environment:**
+**Create the virtual environment:**
             
-            virtualenv venv --distribute
+    virtualenv venv --distribute
 
-        *If you are using Ubuntu, you may also need to include --no-site-packages
+*If you are using Ubuntu, you may also need to include --no-site-packages
 
-        **Activate the virtual environment:**
+**Activate the virtual environment:**
 
-            source venv/bin/activate
+    source venv/bin/activate
 
 ##Install dependencies:
 
