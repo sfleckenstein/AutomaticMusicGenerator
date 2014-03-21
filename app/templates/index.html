@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div id="choices">
-    <form method="POST" action="/index">
+    <form method="POST" action="{{ url_for('begin') }}" method="POST">
         <div class="choice">Genre: {{form.genre}}</div>
         <div class="choice">Tempo: {{form.tempo}}</div>
         <div class="choice">Key Signature: {{form.key_signature}}</div>
