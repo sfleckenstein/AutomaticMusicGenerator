@@ -2,6 +2,7 @@ import urllib2
 from pyechonest import config, song, track
 from config import ECHO_NEST_API_KEY 
 import SongData
+import json, requests
 
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
@@ -15,45 +16,41 @@ def collect_data(song_ids):
         this_song = song.profile(song_id)
         summary = this_song[0].audio_summary
     
-        url  = urllib2.urlopen(summary['analysis_url'])
-    
-        data = ''
-        for line in url.readlines():
-            data = data + line
-    
-        split = data.split('}')
-        
-        sections = []
-        bars = []
-        beats = []
-        tatums = []
-        segments = []
+        url  = summary['analysis_url']
+        print url
+        musical_events = dict(
+            sects='sections',
+            brs='bars',
+            bts='beats',
+            ttms='tatums',
+            sgmnts='segments')
 
-        for line in split:
-            if 'sections' in line:
-                sections.append(line)
-            if 'bars' in line:
-                bars.append(line)
-            if 'beats' in line:
-                beats.append(line)
-            if 'tatums' in line:
-                tatums.append(line)
-            if 'segments' in line:
-                segments.append(line)
-    
+        resp = requests.get(url=url)
+#params=musical_events)
+        data = json.loads(resp.content)
+        
+        sections = data["sections"]
+        bars = ["bars"]
+        beats = ["beats"]
+        tatums = ["tatums"]
+        segments = ["segments"]
+
+        for bar in bars:
+            print bar
+"""
         (bar_starts, bar_durations) = starts_and_durations(bars)
         (beat_starts, beat_durations) = starts_and_durations(beats)
         (tatum_starts, tatum_durations) = starts_and_durations(tatums)
         (seg_pitches, sec_durations) = seg_pitches_and_durations(segments)
         (sec_starts, sec_durations, sec_loudness, sec_tempo, sec_time_sig, sec_key, sec_mode) = section_data(sections)  
- 
+
         song_data.append(SongData.SongData(bar_starts, bar_durations,
                                            beat_starts, beat_durations,
                                            tatum_starts, tatum_durations,
                                            seg_pitches, sec_durations,
                                            sec_starts, sec_durations, sec_loudness, sec_tempo, sec_time_sig, sec_key, sec_mode))
-
-    return song_data
+"""
+    #return song_data
 
 def starts_and_durations(units):
     """Returns a tuple with the unit starts and durations. Can be applied to bars, or beats."""
@@ -141,3 +138,6 @@ def section_data(sections):
     
     return(starts, durations, loudness, tempo, time_sig, key, mode) 
 
+
+if __name__ == "__main__":
+    collect_data(["SOCRHFJ12A67021D74"])
