@@ -1,5 +1,4 @@
 from midiutil.MidiFile import MIDIFile
-
 from LearningAgent.Note import Note
 
 def compose(notes):
