@@ -2,10 +2,11 @@
 {% block content %}
 <div id="choices">
     <form method="POST" action="/index">
-        <div class="choice">{{form.genre.label}}: {{form.genre}}</div>
-        <div class="choice">{{form.tempo.label}}: {{form.tempo}}</div>
-        <div class="choice">{{form.key_signature.label}}: {{form.key_signature}}</div>
-        <div class="choice">{{form.time_signature.label}}: {{form.time_signature}}</div>
+        <div class="choice">Genre: {{form.genre}}</div>
+        <div class="choice">Tempo: {{form.tempo}}</div>
+        <div class="choice">Key Signature: {{form.key_signature}}</div>
+        <div class="choice">Time Signature: {{form.time_signature}}</div>
+        <button type="submit">Begin</button>
     </form>
 </div>
 {% endblock %}

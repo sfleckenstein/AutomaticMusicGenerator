@@ -1,23 +1,16 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>{{title}}</title>
+        <title>Intelligent Music Composer</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     </head>
     <body>
-    <div>Intelligent Music Generator 
-    </div>
-    {% block content %}{% endblock %}
+        <div class="container">
+            <div>Intelligent Music Composer 
+            </div>
+            {% block content %}{% endblock %}
+        </div>
     </body>
-    {% macro with_errors(field) %}
-    <div class="form_field">
-        {% if field.errors %}
-            {% set css_class = 'has_error ' + kwargs.pop('class', '') %}
-            {{ field(class=css_class, **kwargs) }}
-            <ul class="errors">{% for error in field.errors %}<li>{{ error|e }}</li>{% endfor %}</ul>
-        {% else %}
-            {{ field(**kwargs) }}
-        {% endif %}
-    </div>
-   {% endmacro %}
 </html>
 
 
