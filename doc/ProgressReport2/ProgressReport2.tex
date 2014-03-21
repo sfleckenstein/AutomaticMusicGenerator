@@ -71,13 +71,23 @@ ways in which different songs are composed.
 \subsection{Learning Agent}
 The job of the learning agent will be to take the raw music data gathered by Echo Nest and discover the
 relevant patterns in the music. There are a number of different algorithms that could be used to achieve this
-goal, but this project use a \text{TODO: is it just a hierarchical HMM?} hidden Markov model to extract these patterns. This model was chosen because
-it can be used to represent processes where not all of the information about a state is known. This is useful
-because music is very complex and it is very difficult to determine every variable that goes into determining
-what should come next in a song. Another reason that hidden Markov models were chosen for this project
-is because they have been successfully applied the automatic generation of music \cite{5492670}.
-The complexity of a hidden Markov model is also very easy to expand. This can be done by looking at data that is farther in
-the past from the current observation, or by adding in more variables to the states you are considering
+goal, but this project uses a hierarchical hidden Markov model to extract these patterns. A hierarchical 
+hidden Markov model is in essence a hidden Markov model that has states of separate hidden Markov models.
+It allows the learning agent to utilize the inherent structure of music to provide a more informed model 
+\cite{SOMETHING}. First, it looks at the patterns within the higher structure of the music in the Echo 
+Nest's sections (i.e. patterns of choruses, verses, bridges, etc.). Then it moves down to the next level of 
+musical events, bars, and continues this process all the way down to the level of notes, where the 
+respective hidden Markov model will learn the actual sequence and duration of notes.
+
+This model was chosen because it can be used to represent processes where not all of the information about 
+a state is known. This is useful because music is very complex and it is very difficult to determine every
+variable that goes into determining what should come next in a song. Another reason that hidden Markov 
+models were chosen for this project is because they have been successfully applied the automatic generation
+of music \cite{5492670}. The complexity of a hidden Markov model is also very easy to expand. This can be 
+done by looking at data that is farther in the past from the current observation, or by adding in more
+variables to the states being considered. Finally, the hierarchical hidden Markov model allows the learning
+agent to best utilize the structure of the Echo Nest's data, which has the many levels of structure that is
+inherent to music.
 
 \subsection{Composition Agent}
 The composition agent will take the information that the learning agent provides and decide which notes,
@@ -93,7 +103,12 @@ can be easily accessed via The Echo Nest's Remix API; therefore, this interface 
 track IDs to the learning agent.
 
 \subsection{Learning Agent}
-\text:{TODO: Ross, please fill in stuff about the new learning agent/library}
+The learning agent utilizes the GHMM library to perform the required machine learning on the patterns of
+sequenced data for which the user rates highly. A hidden Markov model was created for each level of musical 
+events, as specified by The Echo Nest's API. These musical events include, from largest to smallest:
+sections, bars, beats, tatums, and segments. Currently, the learning agent learns from all of the musical
+events separately; however, the next phase of development will focus on recursively moving down the structure
+of the music, and then reconstructing the song from the bottom upwards.
 
 \section{Software Design}
 \subsection{User Interface}
@@ -122,10 +137,10 @@ track IDs to the learning agent.
 
 \subsection{Learning Agent}
 \begin{enumerate}
-\item The learning agent will use the TODO library
+\item The learning agent will use the GHMM library
 \item The learning agent will take as input track IDs from the Echo Nest interface (COMPLETED)
 \item The learning agent will utilize The Echo Nest's Remix API \cite{Remix} to access sequenced data from track IDs (COMPLETED)
-\item The learning agent will train a model using the TODO library and the input from the Echo Nest Interface 
+\item The learning agent will train a model using the GHMM library and the input from the Echo Nest Interface 
 \item The learning agent will output a trained model to the composition agent 
 \end{enumerate}
 
@@ -152,10 +167,10 @@ ensure that each member has reviewed the code before it enters the master branch
 be utilized for implementing different components and features.
 
 \subsection{Work Division}
-\text{TODO: does this seem reasonable?}
 The work division will be as follows. Ross will be reponsible for the primary development and 
-implenentaiton of the HHMM in th learning agent. Sam will be responsible for the design and 
-implementation of the composition agent. This is not a hard division of the work as each of 
+implementaiton of the HHMM in the learning agent. Sam will be responsible for the design and 
+implementation of the composition agent. Both members will utilize the various APIs provided by
+The Echo Nest to complete their tasks.  This is not a hard division of the work as each of 
 the group members will also be working a great deal on the parts of the project they are not in
 charge of. This division of work fits well with the strengths and experience of each of the 
 project members.
@@ -163,7 +178,7 @@ project members.
 \subsection{Management Plan Effectiveness}
 The largest issue with the management plan has been changes to the learning agent. These changes have
 necessitated a pushback of the timeline for the learning agent. This has not been too large of an issue
-because other work that doesn't rely on the learning agent has continued while the learning agent has
+because other work that does not rely on the learning agent has continued while the learning agent has
 been delayed. Given this, the project should still complete on time.\\
 \\
 The communication method has been an effective way of keeping on track to complete assigned tasks. 
@@ -232,8 +247,13 @@ signature from the user and passes those parameters to the Echo Nest interface. 
 to a page where she will provide ratings of songs that the learning agent can utilize in its learning.
 
 \section{Discussion}
-Given that the project was called unoriginal and uninnovative during it's last review, large changes have been
- made to the learning model that will be used. \text{TODO: Ross, please fill the some basics about HHMMs}
+Given that the project was called unoriginal and uninnovative during its last review, changes have been 
+made to the learning model that will be used. The model has been expanded from a single hidden Markov model to 
+a hidden Markov model of hidden Markov models, a so-called hierarchical hidden Markov model. This expansion
+allows for better utilization of the structure of The Echo Nest's data, as well as the inherent structure of
+music in general. Now, instead of just piecing together separate patterns that may come from random parts of
+songs, the model will be able to take a pattern of higher level patterns such as choruses and verses and then 
+explore deeper into the patterns that make up those patterns such as bars, beats, and notes.
 
 \newpage
 
