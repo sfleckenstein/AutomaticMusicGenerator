@@ -22,7 +22,7 @@
 \begin{center}
 \begin{minipage}{.6\textwidth}
 
-\title{Automatic Music Generator \\ \vspace{2 pt} \Large{Progress Report 2}}
+\title{Automatic Music Generator \\ \vspace{2 pt} \text{Progress Report 2}}
 \author{Sam Fleckenstein (sef44) \\ Ross Nanopoulos (rdn21)}
 \maketitle
 
@@ -71,7 +71,7 @@ ways in which different songs are composed.
 \subsection{Learning Agent}
 The job of the learning agent will be to take the raw music data gathered by Echo Nest and discover the
 relevant patterns in the music. There are a number of different algorithms that could be used to achieve this
-goal, but this project use a \Large{TODO} hidden Markov model to extract these patterns. This model was chosen because
+goal, but this project use a \text{TODO: is it just a hierarchical HMM?} hidden Markov model to extract these patterns. This model was chosen because
 it can be used to represent processes where not all of the information about a state is known. This is useful
 because music is very complex and it is very difficult to determine every variable that goes into determining
 what should come next in a song. Another reason that hidden Markov models were chosen for this project
@@ -93,7 +93,7 @@ can be easily accessed via The Echo Nest's Remix API; therefore, this interface 
 track IDs to the learning agent.
 
 \subsection{Learning Agent}
-\Large:{TODO: Ross, please fill in stuff about the new learning agent/library}
+\text:{TODO: Ross, please fill in stuff about the new learning agent/library}
 
 \section{Software Design}
 \subsection{User Interface}
@@ -113,9 +113,8 @@ track IDs to the learning agent.
 \end{enumerate}
 
 \subsection{User Feedback}
+\text{TODO: how are we handling this with the HHMM?} 
 \begin{enumerate}
-<<<<<<< HEAD
-\Large{TODO: we aren't doing any of this any more, are we?}
 \item The user will be prompted to rate a number of short song clips (IN PROGRESS)
 \item The user ratings will be tabulated and used to update the learned model based on which musical patterns the user rated highest
 \item The user will be presented with one longer song based on the updated musical model
@@ -123,7 +122,6 @@ track IDs to the learning agent.
 
 \subsection{Learning Agent}
 \begin{enumerate}
-<<<<<<< HEAD
 \item The learning agent will use the TODO library
 \item The learning agent will take as input track IDs from the Echo Nest interface (COMPLETED)
 \item The learning agent will utilize The Echo Nest's Remix API \cite{Remix} to access sequenced data from track IDs (COMPLETED)
@@ -132,8 +130,13 @@ track IDs to the learning agent.
 \end{enumerate}
 
 \subsection{Composition Agent}
+\text{TODO: This is completely different, based largely on the learner}
 \begin{enumerate}
-\Large{TODO: This is completely differet, based largely on the learner}
+\item The composition agent will take as input a trained model from the learning agent (COMPLETED)
+\item The composition agent will create an overarching chord progression
+\item The composition agent will then fill in notes using the trained model
+\item The composition agent will write the resulting composition to disk as a .wav file (IN PROGRESS)
+\end{enumerate}
 
 \section{Project Management}
 \subsection{Communication}
@@ -149,33 +152,37 @@ ensure that each member has reviewed the code before it enters the master branch
 be utilized for implementing different components and features.
 
 \subsection{Work Division}
-\Large{TODO: This has changed. What do we want to say?}
-The primary responsibilities of each of the project members are as follows. Sam will be 
-responsible for the primary development and implementation of the learning algorithms. Ross will 
-be in charge of the interface to The Echo Nest's API, as well as the development and 
-implementation of the composition algorithms. This is not a hard division of the work as each of 
+\text{TODO: does this seem reasonable?}
+The work division will be as follows. Ross will be reponsible for the primary development and 
+implenentaiton of the HHMM in th learning agent. Sam will be responsible for the design and 
+implementation of the composition agent. This is not a hard division of the work as each of 
 the group members will also be working a great deal on the parts of the project they are not in
 charge of. This division of work fits well with the strengths and experience of each of the 
 project members.
 
 \subsection{Management Plan Effectiveness}
-The management plan set out in the project proposal has turned out to be very effective. The work
-of each of the team members has been neatly separated, allowing each member to progress at their
-own pace without having to rely on unfinished work from the other team member. 
-
+The largest issue with the management plan has been changes to the learning agent. These changes have
+necessitated a pushback of the timeline for the learning agent. This has not been too large of an issue
+because other work that doesn't rely on the learning agent has continued while the learning agent has
+been delayed. Given this, the project should still complete on time.\\
+\\
 The communication method has been an effective way of keeping on track to complete assigned tasks. 
 It has also allowed questions to be asked more frequently, so that getting stuck on one particular 
-challenge for too long is not an issue.
-
+challenge for too long is not an issue.\\
+\\
 In regards to version control, when the project started, merging commits were a problem due to constantly 
-changing and moving parts. This has been resolved, however, and merging has become a much smoother process.
-
-As such, the project management plan will be kept the same.
+changing and moving parts. This has been resolved, however, and merging has become a much smoother process.\\
+\\
+As such, the project management plan will be kept largely the same, except for shifting around of when 
+various parts of the project will occur.
 
 \subsection{Now to the End}
 Given the changes that have been made to the learning agent, timelines have been pushed back. The project
 should still finish on time, but it may not be as well polished as is desirable.
-\Large{TODO: what else should we put in here?}
+\\
+During the next stage of the project, the focus will be shifting towards completing the learning agent, and
+towards implementing the composition agent. Since various components of the project are getting finished up,
+they will also be hooked together to form a more functional product.
 
 \section{User Interface}
 The user interface will be implemented as a basic web application. First the user will be prompted 
@@ -213,20 +220,20 @@ in the music clip rating portion of the application.
 Given the changes that have been made to the plan for the learning agent, it is now behind where schedule.
 It takes in song IDs from the EN interface, and gathers relevant information about the songs.
 \\
-\Large{TODO: Ross, please fill in what you have been doing with the HHMMs}
+\text{TODO: Ross, please fill in what you have been doing with the HHMMs}
 
 \subsection{Composition Agent}
 The composition agent has not been started, and will be the primary focus of the next phase in development.
 
 \subsection{User Interface}
-\Large{TODO: Ross, please fill in what you have done with the UI}
+\text{TODO: Ross, please fill in what you have done with the UI}
 A basic, but functional user interface has been created that takes in genre, tempo, key signature, and time
 signature from the user and passes those parameters to the Echo Nest interface. The user is then redirected
 to a page where she will provide ratings of songs that the learning agent can utilize in its learning.
 
 \section{Discussion}
-Given that the project was called unoriginal, and uninnovative during it's last review, large changes have been
- made to the learning model that will be used. \Large{TODO: Ross, please fill the some basics about HHMMs}
+Given that the project was called unoriginal and uninnovative during it's last review, large changes have been
+ made to the learning model that will be used. \text{TODO: Ross, please fill the some basics about HHMMs}
 
 \newpage
 
