@@ -1,1 +1,0 @@
-This is the README for the automatic music generator project. It will be filled with useful information at some point.
