@@ -11,8 +11,8 @@ def collect_data(song_ids):
 
     song_data = []
 
-    for song in song_ids:
-        this_song = song.profile(song)
+    for song_id in song_ids:
+        this_song = song.profile(song_id)
         summary = this_song[0].audio_summary
     
         url  = urllib2.urlopen(summary['analysis_url'])
