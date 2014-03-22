@@ -204,8 +204,14 @@ During the next stage of the project, the focus will be shifting towards complet
 towards implementing the composition agent. Since various components of the project are getting finished up,
 they will also be hooked together to form a more functional product.
 
+Lastly, much of the code is currently repetitive between the different musical event learners. There is
+discussion about creating a hidden Markov model state factory class that will be able to be passed the type of 
+musical event (section, beat, segment, etc.), the alphabet for that type (chorus verse bridge, a e a d, etc.),
+as well as the respective transmission and emission matrices. This factory
+will create the hidden Markov model states that will be utilized by the learning agent.
+
 \section{User Interface}
-The user interface will be implemented as a basic web application. First the user will be prompted 
+The user interface will be implemented as a web application. First the user will be prompted 
 to choose a genre, tempo, time signature, and key signature.  The user will click begin, and will 
 be played short sound clips, which can be rated 1 to 4 (this will be updated to words, once it is 
 decided which will provide a better user experience).  After the default number of music clips, the 
@@ -252,8 +258,8 @@ The composition agent has not been started, and will be the primary focus of the
 A basic, but functional user interface has been created that takes in genre, tempo, key signature, and time
 signature from the user and passes those parameters to the Echo Nest interface. The user is then redirected
 to a page where she will provide ratings of songs that the learning agent can utilize in its learning. Some
-basic templating has been performed, to prepare for CSS styling. Basic CSS has also been implemented. Views
-need to be created for the composition and results pages.
+basic templating has been performed, in order to prepare for CSS styling. Basic CSS has also been implemented. 
+Views still need to be created for the composition and results pages.
 
 \section{Discussion}
 Given that the project was called unoriginal and uninnovative during its last review, changes have been 
