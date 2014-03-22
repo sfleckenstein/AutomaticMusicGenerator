@@ -1,0 +1,18 @@
+.container {
+    width: 400px;
+    clear: both;
+    margin: 0 auto;
+}
+
+.container input {
+    width: 98%;
+    clear: both;
+}
+
+#choices {
+    background: #3399CC;
+}
+
+.choice {
+    color: #FFFFFF;
+}
