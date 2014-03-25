@@ -78,7 +78,7 @@ def collect_data(song_ids):
         song_data.append(SongData.SongData(bar_starts, bar_durations,
                                            beat_starts, beat_durations,
                                            tatum_starts, tatum_durations,
-                                           segment_pitches, sec_durations,
+                                           segment_pitches, segment_durations,
                                            sec_starts, sec_durations, 
                                            sec_loudnesses, sec_tempos, 
                                            sec_time_sigs, sec_keys, sec_modes))
