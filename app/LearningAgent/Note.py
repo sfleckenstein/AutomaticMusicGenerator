@@ -1,3 +1,5 @@
+import math
+
 class Note:
     def __init__(self, pitch, duration):
     	self.pitch = pitch
@@ -6,7 +8,7 @@ class Note:
     # This is used because GHMM doesn't like learning about objects.
     # Hopefully this can go away eventually.
     def __str__(self):
-    	return "{}{}".format(self.pitch, self.duration)
+    	return "{}&{}".format(self.pitch, self.duration)
 
     # GHMM requires this to generate the Alphabet.
     def __len__(self):
@@ -150,9 +152,30 @@ class Note:
             'b_7' : 107,
 
             'c_8' : 108,
-        }.get(note[:-3])
+
+            # TODO we are only getting pitches, not octaves from EN.
+            'c' : 60,
+            'c#': 61,
+            'd@': 61,
+            'd' : 62,
+            'd#': 63,
+            'e@': 63,
+            'e' : 64,
+            'f' : 65,
+            'f#': 66,
+            'g@': 66,
+            'g' : 67,
+            'g#': 68,
+            'a@': 68,
+            'a' : 69,
+            'a#': 70,
+            'b@': 70,
+            'b' : 71,
+        }.get(note[:note.find('&')])
     
     @staticmethod
-    def get_duration(note):
-        return note[-3:]
-
+    def get_duration(note, tempo):
+        """Calculates how many beats a note should last for at the given tempo."""
+        # TODO figure out how to trick MIDIutil into outputting fractions of beats
+        sec = note[note.find('&')+1:]
+        return int(math.floor(tempo * float(sec))) 
