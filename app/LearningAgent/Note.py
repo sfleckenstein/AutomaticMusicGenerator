@@ -15,8 +15,6 @@ class Note:
     	return 1
 
     # @ stands for flat
-    #TODO pretty sure static method is not the Python way to do this,
-    # but I can't figure out the right way currently
     @staticmethod
     def get_pitch(note):
         return {

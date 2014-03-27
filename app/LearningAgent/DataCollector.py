@@ -71,7 +71,7 @@ def collect_data(song_ids):
             seg_starts.append(segments[segment]["start"])
             seg_durations.append(segments[segment]["duration"])
             seg_pitches.append(segments[segment]["pitches"])
- 
+
         song_data.append(SongData.SongData(sec_starts, sec_durations,
                                            bar_starts, bar_durations,
                                            beat_starts, beat_durations,

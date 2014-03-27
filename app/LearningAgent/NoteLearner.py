@@ -5,15 +5,10 @@ def get_notes(song_data):
     note_vect = song_data.seg_pitches
     durations = song_data.seg_durations
 
-    print(len(note_vect))
-    print(len(durations))
-
     notes = []
 
-    garbage_range = min(len(note_vect), len(durations))
-
     # This assumes that len(note_vect) and len(durations) are the same
-    for i in xrange(garbage_range):
+    for i in xrange(len(note_vect)):
         notes.append(str(Note.Note(note_vect[i], str(durations[i]))))
 
     return notes
@@ -22,7 +17,6 @@ def train_model(song_data):
     notes = get_notes(song_data) 
  
     # This tells GHMM every possible value that it will be seeing
-    # TODO duplicates should probably be removed first
     alphabet = ghmm.Alphabet(list(set(notes)))
     alphaLen = len(alphabet)
 
