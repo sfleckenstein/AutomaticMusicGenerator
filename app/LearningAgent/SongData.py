@@ -26,14 +26,14 @@ class SongData:
         """Pitches are given as a "chroma" vector, which includes info about the dominance
            of each pitch in the scale at that time. This removes every pitch from that data
            that is not particularly prevelant"""
-        
+
         for i in xrange(len(pitches)):
             for j in xrange(len(pitches[i])):
                 if pitches[i][j] > 0.95:
                      pitches[i][j] = 1
                 else:
                      pitches[i][j] = 0 
-        
+ 
         return pitches
     
     # TODO Please find a different way to do this.
@@ -42,9 +42,10 @@ class SongData:
         index = note_vect.find('&')
         finder = note_vect[1:index-1].split(',')
        
-        for i in range(0, 11):
+        for i in range(0, 12):
             if int(finder[i]) == 1:
                 return(60 + i)
-        # TODO hacks. Figure out why this is happening
+        
+        print('No note in note_vect')
         return 0
     

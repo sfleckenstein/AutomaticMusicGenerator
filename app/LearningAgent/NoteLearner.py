@@ -44,5 +44,3 @@ def train_model(song_data):
    
     return (m, alphabet)
 
-    # Returns 20 notes represented as strings
-    #return(map(alphabet.external, m.sampleSingle(20)))
