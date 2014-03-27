@@ -178,4 +178,4 @@ class Note:
         """Calculates how many beats a note should last for at the given tempo."""
         # TODO figure out how to trick MIDIutil into outputting fractions of beats
         sec = note[note.find('&')+1:]
-        return int(math.floor(tempo * float(sec))) 
+        return int(math.ceil(tempo * float(sec) / 60)) 
