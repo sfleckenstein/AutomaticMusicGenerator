@@ -18,7 +18,7 @@ def write_to_disk(notes):
 
     song.addTrackName(track, time, "Test Track")
     
-    song.addTempo(track, time, 1000) 
+    song.addTempo(track, time, tempo) 
 
     channel = 0
     pitch = 0

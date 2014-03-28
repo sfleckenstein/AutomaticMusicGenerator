@@ -1,21 +1,24 @@
 import ghmm
 import Note
 
-def get_notes(song_data):
-    note_vect = song_data.seg_pitches
-    durations = song_data.seg_durations
-
+def get_notes(songs_data):
     notes = []
 
-    # This assumes that len(note_vect) and len(durations) are the same
-    for i in xrange(len(note_vect)):
-        notes.append(str(Note.Note(note_vect[i], str(durations[i]))))
+    for song_data in songs_data:
+        note_vect = song_data.seg_pitches
+        durations = song_data.seg_durations
+    
+        # This assumes that len(note_vect) and len(durations) are the same
+        for i in xrange(len(note_vect)):
+            notes.append(str(Note.Note(note_vect[i], str(durations[i]))))
 
     return notes
 
-def train_model(song_data):
-    notes = get_notes(song_data) 
- 
+def train_model(songs_data):
+    """Input: list of data on several songs (could be a single song)
+       Ouput: a model trained on all of the songs"""
+    notes = get_notes(songs_data) 
+
     # This tells GHMM every possible value that it will be seeing
     alphabet = ghmm.Alphabet(list(set(notes)))
     alphaLen = len(alphabet)
