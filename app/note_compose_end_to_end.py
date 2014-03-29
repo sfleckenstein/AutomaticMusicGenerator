@@ -18,7 +18,7 @@ def main():
     songs = song.search(style='folk',
                         max_tempo=150,
                         min_tempo=100,
-                        results=2)
+                        results=1)
     #print('Search returned')
 
     song_ids = []

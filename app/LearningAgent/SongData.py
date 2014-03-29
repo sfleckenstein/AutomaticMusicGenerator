@@ -1,9 +1,10 @@
 import math
 
+PREV_PITCHES = 100 
+
 class SongData:
     """A container to hold all the useful info about songs"""
 
-    PREV_PITCHES = 1
 
     def __init__(self, sec_starts, sec_durations,
                        bar_starts, bar_durations,
@@ -50,24 +51,47 @@ class SongData:
                return 60 + i 
    
     def attach_prev_notes(self, notes):
+        global PREV_PITCHES 
+
         prev_notes = []
 
+        for i in xrange(PREV_PITCHES):
+            append = ''
+            for j in range(PREV_PITCHES-i, 0, -1):
+                append += '00|'
+            for j in range(1, i+1):
+                append += str(notes[i-j]) + '|'
+            append += str(notes[i])
+            prev_notes.append('{}'.format(append))
+        
+        for i in range(PREV_PITCHES, len(notes)-2):
+            append = ''
+            for j in range(PREV_PITCHES+1, 0, -1):
+                append += str(notes[i-j+1]) + '|'
+            prev_notes.append(append[:-1])
 
-        prev_notes.append('00|{}'.format(notes[0]))
-        # TODO fix the edge values in the range
-        # TODO fix to use PREV_NOTES
-        for i in range(1, len(notes)):
-            prev_notes.append('{}|{}'.format(notes[i], notes[i-1]))
-
-        print(prev_notes)
         return prev_notes
 
     def attach_prev_durs(self, durations):
         """Attaches durations to the end of a list. The current duration is the last one."""
+        global PREV_PITCHES 
+
         prev_durs = []
-        prev_durs.append('{}|00'.format(durations[len(durations)-1]))
-        for i in range(0, len(durations) - 1):
-            prev_durs.append('{}|{}'.format(durations[i], durations[i+1]))
+
+        for i in xrange(PREV_PITCHES):
+            append = ''
+            for j in range(PREV_PITCHES-i, 0, -1):
+                append += '00|'
+            for j in range(1, i+1):
+                append += str(durations[i-j]) + '|'
+            append += str(durations[i])
+            prev_durs.append('{}'.format(append))
+        
+        for i in range(PREV_PITCHES, len(durations)-2):
+            append = ''
+            for j in range(PREV_PITCHES+1, 0, -1):
+                append += str(durations[i-j+1]) + '|'
+            prev_durs.append(append[:-1])
 
         return prev_durs         
 
@@ -75,8 +99,11 @@ class SongData:
     def get_pitch(note_data):
         dur_index = note_data.find('&')
         pitch_index = note_data.find('|')+1
+        next_pitch_index = note_data.find('|', pitch_index)
+
+        index = min(dur_index, next_pitch_index)
         
-        return note_data[pitch_index:dur_index]
+        return note_data[pitch_index:index]
 
     @staticmethod
     def get_duration(note_data, tempo):
