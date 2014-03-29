@@ -26,12 +26,13 @@ def write_to_disk(notes):
     # TODO modulate the volume
     volume = 127
 
-    for note_vect in notes:
-        duration = int(Note.get_duration(note_vect, tempo))
-        song.addNote(track, channel, int(SongData.get_pitch(note_vect)), time, duration, volume)
+    for note_data in notes:
+        duration = int(SongData.get_duration(note_data, tempo))
+        song.addNote(track, channel, int(SongData.get_pitch(note_data)), time, duration, volume)
+        #print('Dur: {} Pitch: {}'.format(duration, SongData.get_pitch(note_data)))
         time += duration
 
-    binfile = open("output{}.mid" 'wb')
+    binfile = open("output.mid", "wb")
     song.writeFile(binfile)
     binfile.close()
 
