@@ -31,7 +31,7 @@ def write_to_disk(notes):
         song.addNote(track, channel, int(SongData.get_pitch(note_vect)), time, duration, volume)
         time += duration
 
-    binfile = open("output.mid", 'wb')
+    binfile = open("output{}.mid" 'wb')
     song.writeFile(binfile)
     binfile.close()
 
