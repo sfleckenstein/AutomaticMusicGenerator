@@ -1,45 +1,30 @@
 import ghmm
 import Note
 
-def getNotes():
+def get_notes(songs_data):
     notes = []
-    # Define all of the notes we will see
-    # This will eventually be generated from the data received from The Echo Nest
-    c_3 = Note.Note('c_3', '010')
-    notes.append(str(c_3))
 
-    d_3 = Note.Note('d_3', '010')
-    notes.append(str(d_3))    
+    for song_data in songs_data:
+        note_vect = song_data.seg_pitches
+        durations = song_data.seg_durations
     
-    e_3 = Note.Note('e_3', '010')
-    notes.append(str(e_3))
-   
-    f_3 = Note.Note('f_3', '010')
-    notes.append(str(f_3))
-   
-    g_3 = Note.Note('g_3', '010')
-    notes.append(str(g_3))    
-    
-    a_3 = Note.Note('a_3', '010')
-    notes.append(str(a_3))    
-    
-    b_3 = Note.Note('b_3', '010')
-    notes.append(str(b_3))    
-    
-    c_4 = Note.Note('c_4', '010')
-    notes.append(str(c_4))    
-  
+        # This assumes that len(note_vect) and len(durations) are the same
+        for i in xrange(len(note_vect)):
+            notes.append(str(Note.Note(note_vect[i], str(durations[i]))))
+
     return notes
 
-def getNoteSeq():
-    notes = getNotes() 
- 
+def train_model(songs_data):
+    """Input: list of data on several songs (could be a single song)
+       Ouput: a model trained on all of the songs"""
+    notes = get_notes(songs_data) 
+
     # This tells GHMM every possible value that it will be seeing
-    alphabet = ghmm.Alphabet(notes)
+    alphabet = ghmm.Alphabet(list(set(notes)))
     alphaLen = len(alphabet)
 
     # The sequence of notes gathered from the music
-    train_seq = ghmm.EmissionSequence(alphabet, [notes[0], notes[2], notes[4]]) 
+    train_seq = ghmm.EmissionSequence(alphabet, notes) 
  
     # Initiaize the probabilities of transitioning from each state to each other
     # state. There is probably a better way to do this, but this is nice and simple.
@@ -59,6 +44,6 @@ def getNoteSeq():
     
     # Train the model based on the training sequence
     m.baumWelch(train_seq)
-    
-    # Returns 20 notes represented as strings
-    return(map(alphabet.external, m.sampleSingle(20)))
+   
+    return (m, alphabet)
+
