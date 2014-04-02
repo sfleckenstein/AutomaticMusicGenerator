@@ -1,6 +1,18 @@
+import sys
+import time 
+
 from flask import render_template
 from app import app
 from forms import ChoiceForm
+
+from pyechonest import song, config
+from config import ECHO_NEST_API_KEY
+
+from Composer.Composer import compose
+from LearningAgent.NoteLearner import train_model
+from LearningAgent.DataCollector import collect_data
+
+config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
 @app.route('/')
 def index():
