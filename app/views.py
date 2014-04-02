@@ -13,6 +13,20 @@ def begin():
 
 
 @app.route('/compose')
-def compose():
-    #TODO: Logic for composing goes here
-    return render_template("compose.html")
+def compose(style, max_tempo=None, min_tempo=None):
+    songs = song.search(style=style, 
+                        max_tempo=max_tempo,
+                        min_tempo=min_tempo,
+                        results=1)
+
+    song_ids = []
+    for track in songs:
+        song_ids.append(track.id)
+
+    song_data = collect_data(song_ids)
+
+    (model, alphabet) = train_model(song_data)
+
+    comp = compose(model, alphabet)
+
+    return render_template("compose.html", comp=comp)
