@@ -12,15 +12,14 @@ import sys
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
 def main():
-    start = time.time()
-    #print('Start time: {}'.format(start))
     #print('Starting search')
     songs = song.search(style='folk',
                         max_tempo=150,
                         min_tempo=100,
                         results=1)
     #print('Search returned')
-
+    start = time.time()
+    
     song_ids = []
     for track in songs:
         song_ids.append(track.id)

@@ -1,10 +1,9 @@
 import math
 
-PREV_PITCHES = 100 
+PREV_PITCHES = 5 
 
 class SongData:
     """A container to hold all the useful info about songs"""
-
 
     def __init__(self, sec_starts, sec_durations,
                        bar_starts, bar_durations,
