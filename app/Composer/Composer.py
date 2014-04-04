@@ -21,9 +21,12 @@ def compose(bar_model, note_models, bar_alphabet, note_alphabet):
     # TODO modulate the volume
     volume = 127
 
+    # Gets a list of 100 bars
     bars = map(bar_alphabet.external, bar_model.sampleSingle(100))
     
     for bar in bars:
+        # TODO find the right number of notes to use
+        # Gets a list of four notes per bar
         notes = map(note_alphabet.external, note_models[bar].sampleSingle(4))
 
         for note in notes:

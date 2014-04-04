@@ -61,11 +61,6 @@ def collect_data(song_ids):
         seg_starts = []
         seg_durations = []
         seg_pitches = []
-        # TODO figure out what other info might be handy of:
-        # loudness_start
-        # loudness_max_time
-        # loudness_max
-        # timbre (probably not)
         for segment in xrange(len(segments)):
             seg_starts.append(segments[segment]["start"])
             seg_durations.append(segments[segment]["duration"])

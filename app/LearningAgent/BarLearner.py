@@ -11,15 +11,17 @@ def get_bars(songs_data):
         bar_starts = song_data.bar_starts
         pitches = song_data.seg_pitches
 
-        FIXME = min(len(pitches), len(seg_starts))
+        # Because of how the song data is being collected, these two
+        # don't match up, even though they should
+        pitches_and_segs = min(len(pitches), len(seg_starts)) - 1
 
-        # TODO this is super inefficient. See if there is a better way
         # The bars starts don't match exactly with the pitch starts,
         # hence this mess
-        for i in xrange(FIXME - 1):
+        for i in xrange(pitches_and_segs):
+            # The if should be true for bar_starts[len(bars)], but this
+            # is to make sure.
             for j in range(len(bars), len(bar_starts)):
                 if seg_starts[i] < bar_starts[j] < seg_starts[i+1]:
-                    # TODO get the right pitch somehow off of the note_vector representation of the pitch
                     bars.append(str(Bar.Bar(SongData.get_pitch(pitches[i]))))
     
     return bars

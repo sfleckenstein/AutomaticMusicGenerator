@@ -33,6 +33,7 @@ class SongData:
            current one. The first note is the current one. Notes are separated by a |."""
         midi_values = []
 
+        # Removes all of the pitches below a certain threshold, and puts the rest to 1
         for i in xrange(len(pitches)):
             for j in xrange(len(pitches[i])):
                 if pitches[i][j] > 0.95:
@@ -45,11 +46,16 @@ class SongData:
         return self.attach_prev_notes(midi_values) 
 
     def get_note(self, note_vect):
+        # TODO un-hack this
+        # This is a hacky way to not have to use a dictionary since we only support
+        # a single octave.
         for i in range(0, 12):
             if int(note_vect[i]) == 1:
                return 60 + i 
    
     def attach_prev_notes(self, notes):
+        """ This allows us to learn based off of the previous notes, as well as the
+            current one. Appends each of the previous notes to the current one. """
         global PREV_PITCHES 
 
         prev_notes = []
