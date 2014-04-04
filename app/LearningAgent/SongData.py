@@ -96,13 +96,8 @@ class SongData:
 
     @staticmethod
     def get_pitch(note_data):
-        dur_index = note_data.find('&')
-        pitch_index = note_data.find('|')+1
-        next_pitch_index = note_data.find('|', pitch_index)
-
-        index = min(dur_index, next_pitch_index)
-        
-        return note_data[pitch_index:index]
+        pitch_index = note_data.find('|')
+        return note_data[:pitch_index]
 
     @staticmethod
     def get_duration(note_data, tempo):

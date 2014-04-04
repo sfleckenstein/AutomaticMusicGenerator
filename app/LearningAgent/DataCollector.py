@@ -16,7 +16,6 @@ def collect_data(song_ids):
         summary = this_song[0].audio_summary
     
         url  = summary['analysis_url']
-        #print url
         musical_events = dict(
             sects='sections',
             brs='bars',
