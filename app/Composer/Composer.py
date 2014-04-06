@@ -11,7 +11,7 @@ def compose(bar_model, note_models, bar_alphabet, note_alphabet):
     time = 0
     track = 0
     # TODO find the right tempo
-    tempo = 120
+    tempo = 120 * 4
 
     song.addTrackName(track, time, 'Track 1')
     song.addTempo(track, time, tempo)
