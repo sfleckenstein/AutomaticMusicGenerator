@@ -8,9 +8,9 @@ from forms import ChoiceForm
 from pyechonest import song, config
 from config import ECHO_NEST_API_KEY
 
-from Composer.Composer import compose
-from LearningAgent.NoteLearner import train_model
-from LearningAgent.DataCollector import collect_data
+from Composer import Composer
+from LearningAgent import NoteLearner
+from LearningAgent import DataCollector
 
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
@@ -24,7 +24,7 @@ def begin():
     return render_template("begin.html")
 
 
-@app.route('/compose')
+@app.route("/compose", methods=["GET","POST"])
 def compose(style, max_tempo=None, min_tempo=None):
     songs = song.search(style=style, 
                         max_tempo=max_tempo,
@@ -32,13 +32,13 @@ def compose(style, max_tempo=None, min_tempo=None):
                         results=1)
 
     song_ids = []
-    for track in songs:
-        song_ids.append(track.id)
+    for song in songs:
+        song_ids.append(song.id)
 
-    song_data = collect_data(song_ids)
+    song_data = DataCollector.collect_data(song_ids)
 
-    (model, alphabet) = train_model(song_data)
+    (model, alphabet) = NoteLearner.train_model(song_data)
 
-    comp = compose(model, alphabet)
+    comp = Composer.compose(model, alphabet)
 
     return render_template("compose.html", comp=comp)

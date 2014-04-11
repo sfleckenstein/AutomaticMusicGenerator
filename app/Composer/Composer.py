@@ -1,8 +1,6 @@
 from midiutil.MidiFile import MIDIFile
-from LearningAgent.Note import Note
-
-from LearningAgent.SongData import SongData
-
+from ..LearningAgent import Note
+from ..LearningAgent import SongData
 import ghmm
 
 def compose(model, alphabet):
