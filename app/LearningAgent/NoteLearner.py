@@ -1,33 +1,31 @@
 import ghmm
 import Note
-import sys
-
 import BarLearner
 
-def get_notes(songs_data):
+def get_notes_and_durs(songs_data):
     notes = []
+    durations = []
 
     for song_data in songs_data:
         note_vect = song_data.seg_pitches
-        durations = song_data.seg_durations
+        durs = song_data.seg_durations
 
         # This assumes that len(note_vect) and len(durations) are the same
         for i in xrange(len(note_vect)):
-            notes.append(str(Note.Note(note_vect[i], str(durations[i]))))
+            # TODO remove durations from Note data
+            notes.append(str(Note.Note(note_vect[i], str(durs[i]))))
+            notes.append(str(durs[i]))
 
-    return notes
+    return (notes, durations)
 
 def train_model(songs_data):
     """Input: list of data on several songs (could be a single song)
        Ouput: a list of models, one for each bar type. """
     note_models = {}
-    notes = get_notes(songs_data)
+    (notes, durations) = get_notes_and_durs(songs_data)
 
     bars = BarLearner.get_bars(songs_data)
 
-    # TODO
-    # for each bar in songs_data, find out what type each bar is
-    # create a new model for each of the different types of bars
     for bar in set(bars):
         # This tells GHMM every possible value that it will be seeing
         alphabet = ghmm.Alphabet(list(set(notes)))

@@ -1,6 +1,6 @@
 import math
 
-PREV_PITCHES = 5 
+PREV_PITCHES = 2 
 
 class SongData:
     """A container to hold all the useful info about songs"""

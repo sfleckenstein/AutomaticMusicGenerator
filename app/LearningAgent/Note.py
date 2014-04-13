@@ -4,10 +4,11 @@ class Note:
     def __init__(self, pitch, duration):
     	self.pitch = pitch
     	self.duration = duration
+        print("{}".format(self.duration))
 
     # The & separates the pitches from the durations
     def __str__(self):
-    	return "{}&{}".format(self.pitch, self.duration)
+    	return "{}".format(self.pitch, self.duration)
 
     # GHMM requires this to generate the Alphabet.
     def __len__(self):
