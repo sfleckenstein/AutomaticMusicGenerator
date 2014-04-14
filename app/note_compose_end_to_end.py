@@ -31,11 +31,13 @@ def main():
 
     print('Training models')
     (bar_model, bar_alphabet) = BarLearner.train_model(songs_data)
-    (note_models, note_alphabet) = NoteLearner.train_model(songs_data)
+    # TODO get the real tempo
+    tempo = 120 * 4 
+    (note_models, duration_model, note_alphabet, duration_alphabet) = NoteLearner.train_model(songs_data, tempo)
     print('Models trained')
 
     print('Composing')
-    compose(bar_model, note_models, bar_alphabet, note_alphabet)
+    compose(bar_model, note_models, duration_model, bar_alphabet, note_alphabet, duration_alphabet)
     print('Done composing')
     end = time.time()
     
