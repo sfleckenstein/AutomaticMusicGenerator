@@ -23,6 +23,7 @@ def compose(bar_model, note_models, duration_model, bar_alphabet, note_alphabet,
 
     # Gets a list of 100 bars
     bars = map(bar_alphabet.external, bar_model.sampleSingle(100))
+    
     durations = map(duration_alphabet.external, duration_model.sampleSingle(100))
    
     index = 0 
