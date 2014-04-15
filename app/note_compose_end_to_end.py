@@ -20,6 +20,7 @@ def main():
                         max_tempo=150,
                         min_tempo=100,
                         results=1)
+
     print('Search returned')
     start = time.time()
     
