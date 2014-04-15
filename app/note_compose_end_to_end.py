@@ -5,7 +5,9 @@ from config import ECHO_NEST_API_KEY
 from Composer.Composer import compose 
 import LearningAgent.BarLearner as BarLearner
 import LearningAgent.NoteLearner as NoteLearner
+
 from LearningAgent.DataCollector import collect_data
+from LearningAgent.SongSelector import rank_songs
 
 import time
 import sys
@@ -24,15 +26,20 @@ def main():
     song_ids = []
     for track in songs:
         song_ids.append(track.id)
+    
+    # TODO get the real tempo
+    tempo = 120 * 4 
 
     print('Collecting data')
     songs_data = collect_data(song_ids)
     print('Data collected')
 
+    print('Ranking songs')
+    rank_songs(songs_data, tempo) 
+    print('Songs ranked')
+
     print('Training models')
     (bar_model, bar_alphabet) = BarLearner.train_model(songs_data)
-    # TODO get the real tempo
-    tempo = 120 * 4 
     (note_models, duration_model, note_alphabet, duration_alphabet) = NoteLearner.train_model(songs_data, tempo)
     print('Models trained')
 
