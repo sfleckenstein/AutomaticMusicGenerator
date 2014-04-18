@@ -13,7 +13,6 @@ def get_notes_and_durs(songs_data, tempo):
 
         # This assumes that len(note_vect) and len(durations) are the same
         for i in xrange(len(note_vect)):
-            # TODO remove durations from Note data
             notes.append(str(Note.Note(note_vect[i])))
             durations.append(str(SongData.get_duration(durs[i], tempo)))
 

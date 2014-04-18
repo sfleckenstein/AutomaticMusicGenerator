@@ -1,6 +1,8 @@
 from collections import defaultdict
 
 def rank_songs(songs_data, tempo):
+    """ This calculates how well each song fits our data model.
+        Abandoned when we realized that songs didn't fit our model at all. """
     positive_ratios = []
 
     for song in songs_data:

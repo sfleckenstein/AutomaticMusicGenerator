@@ -1,16 +1,16 @@
+import time
+import sys
+
 from pyechonest import song, config
 
-from config import ECHO_NEST_API_KEY
-
-from Composer.Composer import compose 
 import LearningAgent.BarLearner as BarLearner
 import LearningAgent.NoteLearner as NoteLearner
 
+from config import ECHO_NEST_API_KEY
+from Composer.Composer import compose 
 from LearningAgent.DataCollector import collect_data
 from LearningAgent.SongSelector import rank_songs
 
-import time
-import sys
 
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
