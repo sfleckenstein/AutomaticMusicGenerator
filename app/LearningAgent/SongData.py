@@ -46,9 +46,6 @@ class SongData:
         return self.attach_prev_notes(midi_values) 
 
     def get_note(self, note_vect):
-        # TODO un-hack this
-        # This is a hacky way to not have to use a dictionary since we only support
-        # a single octave.
         for i in range(0, 12):
             if int(note_vect[i]) == 1:
                return 60 + i 
