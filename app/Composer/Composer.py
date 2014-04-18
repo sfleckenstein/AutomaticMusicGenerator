@@ -1,6 +1,5 @@
 from midiutil.MidiFile import MIDIFile
 from LearningAgent.Note import Note
-
 from LearningAgent.SongData import SongData
 
 import ghmm
