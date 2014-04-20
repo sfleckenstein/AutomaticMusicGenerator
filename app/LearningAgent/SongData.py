@@ -1,6 +1,6 @@
 import math
 
-PREV_PITCHES = 5 
+PREV_PITCHES = 2 
 
 class SongData:
     """A container to hold all the useful info about songs"""
@@ -33,6 +33,7 @@ class SongData:
            current one. The first note is the current one. Notes are separated by a |."""
         midi_values = []
 
+        # Removes all of the pitches below a certain threshold, and puts the rest to 1
         for i in xrange(len(pitches)):
             for j in xrange(len(pitches[i])):
                 if pitches[i][j] > 0.95:
@@ -50,6 +51,8 @@ class SongData:
                return 60 + i 
    
     def attach_prev_notes(self, notes):
+        """ This allows us to learn based off of the previous notes, as well as the
+            current one. Appends each of the previous notes to the current one. """
         global PREV_PITCHES 
 
         prev_notes = []
@@ -96,13 +99,8 @@ class SongData:
 
     @staticmethod
     def get_pitch(note_data):
-        dur_index = note_data.find('&')
-        pitch_index = note_data.find('|')+1
-        next_pitch_index = note_data.find('|', pitch_index)
-
-        index = min(dur_index, next_pitch_index)
-        
-        return note_data[pitch_index:index]
+        pitch_index = note_data.find('|')
+        return note_data[:pitch_index]
 
     @staticmethod
     def get_duration(note_data, tempo):
