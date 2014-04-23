@@ -2,6 +2,7 @@ import math
 import ghmm
 import Bar
 from SongData import SongData
+from Trainer import Trainer
 
 def get_bars(songs_data):
     bars = []
@@ -30,7 +31,9 @@ def train_model(songs_data):
     """Input: list of data on several songs (could be a single song)
        Ouput: a model trained on all of the songs"""
     bars = get_bars(songs_data)
-
+    trainer = Trainer(bars)
+    m, alphabet = trainer.train()
+    """
     # This tells GHMM every possible value that it will be seeing
     alphabet = ghmm.Alphabet(list(set(bars)))
     alphaLen = len(alphabet)
@@ -56,6 +59,6 @@ def train_model(songs_data):
     
     # Train the model based on the training sequence
     m.baumWelch(train_seq)
-   
+    """
     return (m, alphabet)
 
