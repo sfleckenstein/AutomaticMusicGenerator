@@ -9,9 +9,6 @@ class Trainer:
         alphabet = ghmm.Alphabet(list(set(self.events)))
         alphaLen = len(alphabet)
 
-        # The sequence of musical events gathered from the music
-        train_seq = ghmm.EmissionSequence(alphabet, self.events) 
- 
         # Initiaize the probabilities of transitioning from each state to each other
         # state. There is probably a better way to do this, but this is nice and simple.
         trans_prob = 1.0 / (alphaLen)
@@ -25,6 +22,9 @@ class Trainer:
         # Some grease to get GHMM to work
         pi = [1.0/alphaLen] * alphaLen 
     
+        # The sequence of musical events gathered from the music
+        train_seq = ghmm.EmissionSequence(alphabet, self.events) 
+ 
         # Generate the model of the data
         m = ghmm.HMMFromMatrices(alphabet, ghmm.DiscreteDistribution(alphabet), trans, emiss, pi)
     

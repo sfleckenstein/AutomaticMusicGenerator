@@ -7,7 +7,7 @@ import LearningAgent.BarLearner as BarLearner
 import LearningAgent.NoteLearner as NoteLearner
 
 from config import ECHO_NEST_API_KEY
-from Composer.Composer import compose 
+from Composer.Composer import compose
 from LearningAgent.DataCollector import collect_data
 from LearningAgent.SongSelector import rank_songs
 
