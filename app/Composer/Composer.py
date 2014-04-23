@@ -1,7 +1,6 @@
 from midiutil.MidiFile import MIDIFile
-from ..LearningAgent.Note import Note
-from ..LearningAgent.SongData import SongData
-
+from ..LearningAgent import Note
+from ..LearningAgent import SongData
 import ghmm
 
 def compose(bar_model, note_models, duration_model, bar_alphabet, note_alphabet, duration_alphabet):
@@ -44,4 +43,3 @@ def compose(bar_model, note_models, duration_model, bar_alphabet, note_alphabet,
     binfile = open("output.mid", "wb")
     song.writeFile(binfile)
     binfile.close()
-        

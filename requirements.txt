@@ -1,6 +1,6 @@
 MIDIUtil==0.89
-argparse==1.2.1
 ghmmwrapper==0.8
 pyechonest==8.0.1
 requests==2.2.1
-wsgiref==0.1.2
+WTForms==1.0.5
+Werkzeug==0.9.4
