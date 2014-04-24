@@ -8,8 +8,6 @@
 \usepackage{float}
 \usepackage[final]{pdfpages}
 
-%\pagenumbering{gobble}
-
 \hypersetup{
 	colorlinks=true,
 	linkcolor=black
@@ -22,7 +20,7 @@
 \begin{center}
 \begin{minipage}{.6\textwidth}
 
-\title{Automatic Music Generator \\ \vspace{2 pt} \text{Final Report}}
+\title{Automatic ``Music'' Generator \\ \vspace{2 pt} \text{Final Report}}
 \author{Sam Fleckenstein (sef44) \\ Ross Nanopoulos (rdn21)}
 \maketitle
 
@@ -35,83 +33,37 @@
 \newpage
 
 \section{Abstract}
-The purpose of this project is to develop an intelligent music composer that will analyze common and 
-popular patterns in music, reason about those patterns, and generate a new piece of music that is 
-significantly different than the analyzed pieces, while still being interesting.
+The purpose of this project is to develop an intelligent music composer that will analyze common and popular patterns in music, reason about those patterns, and generate a new piece of music that is significantly different than the analyzed pieces, while still being interesting.
 
 \newpage
 
 \section{Introduction}
-What is the process by which humans make music? They study the fundamentals: beats, measures, time
-and key signatures, tempo, rhythm. They listen to great composers: Bach, Tchaichovsky, Mahler, Debussy,
-Chopin. Somehow this knowledge combined with creativity yields additional, masterful compositions. How
-then, does one enable a computer to exhibit this thoughtful creativity?\\
+What is the process by which humans make music? They study the fundamentals: beats, measures, time and key signatures, tempo, rhythm. They listen to great composers: Bach, Tchaichovsky, Mahler, Debussy, Chopin. Somehow this knowledge combined with creativity yields additional, masterful compositions. How then, does one enable a computer to exhibit this thoughtful creativity?\\
 \\
-A variety of methods have been proposed for algorithmic composition including hidden Markov models 
-\cite{5492670}, genetic algorithms \cite{514161}, and neural networks \cite{4667040}. Additionally, 
-a field known as "combination theory" has combined these methods to create more advanced learning and 
-composition algorithms \cite{4626654}. Hidden Markov Models utilize an element of probability and 
-uncertainty that can lead to much more interesting compositions
+A variety of methods have been proposed for algorithmic composition including hidden Markov models \cite{5492670}, genetic algorithms \cite{514161}, and neural networks \cite{4667040}. Additionally, a field known as "combination theory" has combined these methods to create more advanced learning and composition algorithms \cite{4626654}. Hidden Markov Models utilize an element of probability and uncertainty that can lead to much more interesting compositions
 \\
-The argument can be made that innate creativity plays a large role in being able to compose interest-
-ing music. However, a goal of artificial intelligence is to eventually develop systems that can think and
-have personalities of their own. Thus, this innate creativity when composing music will develop with more
-advanced artificially intelligent systems that can think for themselves and exhibit such behavior.
+The argument can be made that innate creativity plays a large role in being able to compose interest- ing music. However, a goal of artificial intelligence is to eventually develop systems that can think and have personalities of their own. Thus, this innate creativity when composing music will develop with more advanced artificially intelligent systems that can think for themselves and exhibit such behavior.
 
 \section{Application}
 \subsection{The Echo Nest Interface}
-The backbone of the Echo Nest interface will be The Echo Nest’s large database of music intelligence. The
-song parser will utilize The Echo Nest’s API to extract useful song information from the database, which
-includes a plethora of aspects including time signature, key, mode, tempo, loudness, duration, end of fade
-in, start of fade out, audio fingerprint, timbre, pitch, and loudness. Additionally, The Echo Nest provides
-sequenced data as ”musically relevant elements” that include segments, tatums, beats, bars, and sections.
-This information will allow the learning agent to discern the myriad dynamics of songs and learn about the
-ways in which different songs are composed.
+The backbone of the Echo Nest interface will be The Echo Nest’s large database of music intelligence. The song parser will utilize The Echo Nest’s API to extract useful song information from the database, which includes a plethora of aspects including time signature, key, mode, tempo, loudness, duration, end of fade in, start of fade out, audio fingerprint, timbre, pitch, and loudness. Additionally, The Echo Nest provides sequenced data as ”musically relevant elements” that include segments, tatums, beats, bars, and sections.  This information will allow the learning agent to discern the myriad dynamics of songs and learn about the ways in which different songs are composed.
 
 \subsection{Learning Agent}
-The job of the learning agent will be to take the raw music data gathered by Echo Nest and discover the
-relevant patterns in the music. There are a number of different algorithms that could be used to achieve this
-goal, but this project uses a hierarchical hidden Markov model to extract these patterns. A hierarchical 
-hidden Markov model is a generalization of hidden Markov models, where each state is itself a hidden Markov
-Model. \cite{Fine:1998:HHM:325865.325879} This allows the learning agent to utilize the inherent structure of 
-music to provide a more informed model.\\
+The job of the learning agent will be to take the raw music data gathered by Echo Nest and discover the relevant patterns in the music. There are a number of different algorithms that could be used to achieve this goal, but this project uses a hierarchical hidden Markov model to extract these patterns. A hierarchical hidden Markov model is a generalization of hidden Markov models, where each state is itself a hidden Markov Model. \cite{Fine:1998:HHM:325865.325879} This allows the learning agent to utilize the inherent structure of music to provide a more informed model.\\
 \\
-Additionally, hierarchical hidden Markov models have been used to look at pitch structure in music.   \cite{_learningmusical}
-In relation to this project, the learning agent looks at the patterns within the higher structure of the 
-music in the Echo Nest's sections (i.e. patterns of choruses, verses, bridges, etc.). Then it moves deeper
-into the next level of musical events, bars, and continues this process all the way down to the level of notes,
-where the respective hidden Markov model will learn the actual sequence of pitches and duration of these notes. 
+Additionally, hierarchical hidden Markov models have been used to look at pitch structure in music.   \cite{_learningmusical} In relation to this project, the learning agent looks at the patterns within the higher structure of the music in the Echo Nest's sections (i.e. patterns of choruses, verses, bridges, etc.). Then it moves deeper into the next level of musical events, bars, and continues this process all the way down to the level of notes, where the respective hidden Markov model will learn the actual sequence of pitches and duration of these notes. 
 
-This model was chosen because it can be used to represent processes where not all of the information about 
-a state is known. This is useful because music is very complex and it is very difficult to determine every
-variable that goes into determining what should come next in a song. Another reason that hidden Markov 
-models were chosen for this project is because they have been successfully applied the automatic generation
-of music \cite{5492670}. The complexity of a hidden Markov model is also very easy to expand. This can be 
-done by looking at data that is farther in the past from the current observation, or by adding in more
-variables to the states being considered. Finally, the hierarchical structure of hidden Markov models allows
-the learning agent to best utilize the structure of the Echo Nest's data, which has the many levels of 
-structure inherent to music.
+This model was chosen because it can be used to represent processes where not all of the information about a state is known. This is useful because music is very complex and it is very difficult to determine every variable that goes into determining what should come next in a song. Another reason that hidden Markov models were chosen for this project is because they have been successfully applied the automatic generation of music \cite{5492670}. The complexity of a hidden Markov model is also very easy to expand. This can be done by looking at data that is farther in the past from the current observation, or by adding in more variables to the states being considered. Finally, the hierarchical structure of hidden Markov models allows the learning agent to best utilize the structure of the Echo Nest's data, which has the many levels of structure inherent to music.
 
 \subsection{Composition Agent}
-The composition agent will take the information that the learning agent provides and decide which notes,
-patterns, rhythms, etc. to incorporate into its own piece of music. It will then be responsible for outputting
-this generated music to a .wav file, which can be used later for further analysis and classification.
+The composition agent will take the information that the learning agent provides and decide which notes, patterns, rhythms, etc. to incorporate into its own piece of music. It will then be responsible for outputting this generated music to a .wav file, which can be used later for further analysis and classification.
 
 \section{Methodology}
 \subsection{The Echo Nest Interface}
-This interface utilizes pyechonest, a python wrapper for The Echo Nest's Main API, in order to collect an 
-audio summary, which contains the basic information for a song such as the key, mode, tempo, time signature, 
-and an analysis URL (i.e. where the sequenced data for each song lives). The sequenced datea
-can be easily accessed via The Echo Nest's Remix API; therefore, this interface only needs to pass a list of
-track IDs to the learning agent.
+This interface utilizes pyechonest, a python wrapper for The Echo Nest's Main API, in order to collect an audio summary, which contains the basic information for a song such as the key, mode, tempo, time signature, and an analysis URL (i.e. where the sequenced data for each song lives). The sequenced datea can be easily accessed via The Echo Nest's Remix API; therefore, this interface only needs to pass a list of track IDs to the learning agent.
 
 \subsection{Learning Agent}
-The learning agent utilizes the GHMM library to perform the required machine learning on the patterns of
-sequenced data for which the user rates highly. A hidden Markov model was created for each level of musical 
-events, as specified by The Echo Nest's API. These musical events include, from largest to smallest:
-sections, bars, beats, tatums, and segments. Currently, the learning agent learns from all of the musical
-events separately; however, the next phase of development will focus on recursively moving down the structure
-of the music, and then reconstructing the song from the bottom upwards.
+The learning agent utilizes the GHMM library to perform the required machine learning on the patterns of sequenced data for which the user rates highly. A hidden Markov model was created for each level of musical events, as specified by The Echo Nest's API. These musical events include, from largest to smallest: sections, bars, beats, tatums, and segments. Currently, the learning agent learns from all of the musical events separately; however, the next phase of development will focus on recursively moving down the structure of the music, and then reconstructing the song from the bottom upwards.
 
 \section{Software Design}
 \subsection{User Interface}
@@ -181,54 +133,25 @@ charge of. This division of work fits well with the strengths and experience of 
 project members.
 
 \subsection{Management Plan Effectiveness}
-The largest issue with the management plan has been changes to the learning agent. These changes have
-necessitated a pushback of the timeline for the learning agent. This has not been too large of an issue
-because other work that does not rely on the learning agent has continued while the learning agent has
-been delayed. Given this, the project should still complete on time.\\
+The largest issue with the management plan has been changes to the learning agent. These changes have necessitated a pushback of the timeline for the learning agent. This has not been too large of an issue because other work that does not rely on the learning agent has continued while the learning agent has been delayed. Given this, the project should still complete on time.\\
 \\
-The communication method has been an effective way of keeping on track to complete assigned tasks. 
-It has also allowed questions to be asked more frequently, so that getting stuck on one particular 
-challenge for too long is not an issue.\\
+The communication method has been an effective way of keeping on track to complete assigned tasks.  It has also allowed questions to be asked more frequently, so that getting stuck on one particular challenge for too long is not an issue.\\
 \\
-In regards to version control, when the project started, merging commits were a problem due to constantly 
-changing and moving parts. This has been resolved, however, and merging has become a much smoother process.\\
+In regards to version control, when the project started, merging commits were a problem due to constantly changing and moving parts. This has been resolved, however, and merging has become a much smoother process.\\
 \\
-As such, the project management plan will be kept largely the same, except for shifting around of when 
-various parts of the project will occur.
+As such, the project management plan will be kept largely the same, except for shifting around of when various parts of the project will occur.
 
 \subsection{Now to the End}
-Given the changes that have been made to the learning agent, timelines have been pushed back. The project
-should still finish on time, but it may not be as well polished as is desirable.
+Given the changes that have been made to the learning agent, timelines have been pushed back. The project should still finish on time, but it may not be as well polished as is desirable.
 \\
-During the next stage of the project, the focus will be shifting towards completing the learning agent, and
-towards implementing the composition agent. Since various components of the project are getting finished up,
-they will also be hooked together to form a more functional product.
+During the next stage of the project, the focus will be shifting towards completing the learning agent, and towards implementing the composition agent. Since various components of the project are getting finished up, they will also be hooked together to form a more functional product.
 
-Lastly, much of the code is currently repetitive between the different musical event learners. There is
-discussion about creating a hidden Markov model state factory class that will be able to be passed the type of 
-musical event (section, beat, segment, etc.), the alphabet for that type (chorus verse bridge, a e a d, etc.),
-as well as the respective transmission and emission matrices. This factory
-will create the hidden Markov model states that will be utilized by the learning agent.
+Lastly, much of the code is currently repetitive between the different musical event learners. There is discussion about creating a hidden Markov model state factory class that will be able to be passed the type of musical event (section, beat, segment, etc.), the alphabet for that type (chorus verse bridge, a e a d, etc.), as well as the respective transmission and emission matrices. This factory will create the hidden Markov model states that will be utilized by the learning agent.
 
 \section{User Interface}
-The user interface will be implemented as a web application. First the user will be prompted 
-to choose a genre, tempo, time signature, and key signature.  The user will click begin, and will 
-be played short sound clips, which can be rated 1 to 4 (this will be updated to words, once it is 
-decided which will provide a better user experience).  After the default number of music clips, the 
-user can choose to rate more music clips or compose a song.  
-Below are screen shots of the application flow:
+The user interface will be implemented as a web application. First the user will be prompted to choose a genre, tempo, time signature, and key signature.  The user will click begin, and will be played short sound clips, which can be rated 1 to 4 (this will be updated to words, once it is decided which will provide a better user experience).  After the default number of music clips, the user can choose to rate more music clips or compose a song.  Below are screen shots of the application flow:
 
-\begin{figure}[H]
-\centerline{\includegraphics[width=10cm]{begin.png}}
-\end{figure}
-
-\begin{figure}[H]
-\centerline{\includegraphics[width=10cm]{pref.png}}
-\end{figure}
-
-\begin{figure}[H]
-\centerline{\includegraphics[width=10cm]{compose.png}}
-\end{figure}
+\Large{TODO: fill in the new UI} \normalsize
 
 \section{Testing and Evaluation}
 The testing is currently all manual. Each of the developers is responsible for testing all of their
@@ -240,7 +163,17 @@ more thorough testing procedure will be implemented to ensure the music generato
 \subsection{The Echo Nest Interface}
 
 \subsection{Learning Agent}
-
+The largest problem with the learning agent was what information the learning was based off of. At the beginning of the project, it was thought that looking at the group of previous notes would give enough information to guess what the next note should be. The design of the learning agent was based around this assumption, which turned out to be a fatal flaw.\\
+\\
+After the program got to the point where it was first outputting "music", several different methods were implemented to see if the subjective quality of the output could be improved. First, the number of previous notes examined was increased an decreased, with no noticeable change in musical quality. The next attempt was to try splitting up pitches and durations. The learning agent initially learned based in tuples of pitch and duration values because it was thought that each of these values could potentially influence the other. After splitting these two up, there was also no dicernible change in the quality of the music. One benefit this provided, however, was a major decrease in the runtime of the program.\\
+\\
+Before this change was implemented, the program was taking about 900 seconds to execute end to end. This included gathering data on what songs the user was interested in, learning off of those songs, and then generating the music. The most unfortunate part about this stage of the project was that the learning agent was only looking at a single song during those 900 seconds. Because about 75\% of the execution time was in an external library, there was almost nothing we could do about this issue.\\
+\\
+After separating the pitches from the durations, the learning agent had a much smaller set of possible values to look at, which resulted in a runtime of about 70 seconds to learn from a single song. This is still rather slower than is optimal because the initial plan was to have the learning agent look at a large number of songs, possibly in the range of 100.\\
+\\
+Were this project to continue, a major redesign of the learning agent would be the first step. It seems that in order for the learning agent to be able to learn anything useful about the music it is presented, the agent would need to have much more knowledge of how music is composed. Instead of simply looking at notes and durations, the agent could be programmed to look for specific patterns in the music that extend beyond just notes.\\
+\\
+At this time, that sort of knowledge is not available to either of the team members, which means that some sort of expert on musical composition would most likely have to be found and added to the team. With the knowledge of someone who is experienced in composing, it would be possible to implement a much more intelligent learning agent.
 
 \subsection{Composition Agent}
 
@@ -265,6 +198,6 @@ database.
 \bibliography{References}
 \bibliographystyle{plain}
 
-\includepdf[pages=-]{ProgressReport1.pdf}
+\includepdf[pages=-]{ProgressReport2.pdf}
 
 \end{document}
