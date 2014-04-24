@@ -5,7 +5,7 @@ from SongData import SongData
 from Trainer import Trainer
 
 class BarLearner(threading.Thread):
-    def __init__(self, thread_id, name, counter, songs_data,queue):
+    def __init__(self, thread_id, name, counter, songs_data):
         threading.Thread.__init__(self)
         self.thread_id = thread_id
         self.name = name
