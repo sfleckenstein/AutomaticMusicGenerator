@@ -5,16 +5,17 @@ from pyechonest import song, config
 
 import LearningAgent.BarLearner as BarLearner
 import LearningAgent.NoteLearner as NoteLearner
+import LearningAgent.DurationLearner as DurationLearner
 
 from config import ECHO_NEST_API_KEY
-from Composer.Composer import compose 
+from Composer.Composer import compose
 from LearningAgent.DataCollector import collect_data
 from LearningAgent.SongSelector import rank_songs
 
 
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
-def main():
+def create():
     print('Starting search')
     songs = song.search(style='folk',
                         max_tempo=150,
@@ -41,7 +42,11 @@ def main():
 
     print('Training models')
     (bar_model, bar_alphabet) = BarLearner.train_model(songs_data)
-    (note_models, duration_model, note_alphabet, duration_alphabet) = NoteLearner.train_model(songs_data, tempo)
+    print str(bar_model), str(bar_alphabet)
+    (note_models, note_alphabet) = NoteLearner.train_model(songs_data)
+    print str(note_models), str(note_alphabet)
+    (duration_model, duration_alphabet) = DurationLearner.train_model(songs_data, tempo)
+    print str(duration_model), str(duration_alphabet)
     print('Models trained')
 
     print('Composing')
@@ -50,6 +55,3 @@ def main():
     end = time.time()
     
     print('Total time: {}'.format(end - start))
-
-if __name__ == "__main__":
-    main()
