@@ -1,6 +1,6 @@
 import sys
 from PyQt4 import QtGui, QtCore
-import app.Creator as creator
+import Creator
 
 class MainWindow(QtGui.QWidget):
     def __init__(self):
@@ -36,7 +36,7 @@ class MainWindow(QtGui.QWidget):
         compose_btn = QtGui.QPushButton('Compose', self)
         compose_btn.resize(compose_btn.sizeHint())
         # links the creation to the clicking of the button
-        compose_btn.clicked.connect(creator.create)
+        compose_btn.clicked.connect(self.create)
 
         grid.addWidget(compose_btn, 5, 1)
         self.setLayout(grid)
@@ -51,6 +51,9 @@ class MainWindow(QtGui.QWidget):
         cp = QtGui.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+
+    def create(self):
+        Creator.create(style='folk', max_tempo=180, min_tempo=100)
 
 def main():
     app = QtGui.QApplication(sys.argv)

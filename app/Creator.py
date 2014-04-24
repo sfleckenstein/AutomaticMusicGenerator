@@ -15,11 +15,11 @@ from LearningAgent.SongSelector import rank_songs
 
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
-def create():
+def create(style, max_tempo=None, min_tempo=None, key=None, time_sig=None):
     print('Starting search')
-    songs = song.search(style='folk',
-                        max_tempo=150,
-                        min_tempo=100,
+    songs = song.search(style=style,
+                        max_tempo=max_tempo,
+                        min_tempo=min_tempo,
                         results=1)
 
     print('Search returned')
