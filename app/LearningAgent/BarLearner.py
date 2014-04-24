@@ -11,7 +11,6 @@ class BarLearner(threading.Thread):
         self.name = name
         self.counter = counter
         self.songs_data = songs_data
-        self.queue = queue
 
     def run(self):
         print "Starting " + self.name
