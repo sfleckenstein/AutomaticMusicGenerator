@@ -3,14 +3,13 @@ from SongData import SongData
 from Trainer import Trainer
 
 class DurationLearner(threading.Thread):
-    def __init__(self, thread_id, name, counter, songs_data, tempo, queue):
+    def __init__(self, thread_id, name, counter, songs_data, tempo):
         threading.Thread.__init__(self)
         self.thread_id = thread_id
         self.name = name
         self.counter = counter
         self.songs_data = songs_data
         self.tempo = tempo
-        self.queue = queue
 
     def run(self):
         print "Starting " + self.name
