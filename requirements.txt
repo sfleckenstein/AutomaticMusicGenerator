@@ -1,4 +1,3 @@
-MIDIUtil==0.89
 ghmmwrapper==0.8
 pyechonest==8.0.1
 requests==2.2.1
