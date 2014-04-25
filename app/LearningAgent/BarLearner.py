@@ -1,8 +1,22 @@
-import math
+import math, threading, time
 import ghmm
 import Bar
 from SongData import SongData
+from Trainer import Trainer
 
+class BarLearner(threading.Thread):
+    def __init__(self, thread_id, name, counter, songs_data):
+        threading.Thread.__init__(self)
+        self.thread_id = thread_id
+        self.name = name
+        self.counter = counter
+        self.songs_data = songs_data
+
+    def run(self):
+        print "Starting " + self.name
+        self.queue.put(train_model(self.songs_data))
+        print "Exiting " + self.name
+    
 def get_bars(songs_data):
     bars = []
     
@@ -30,32 +44,7 @@ def train_model(songs_data):
     """Input: list of data on several songs (could be a single song)
        Ouput: a model trained on all of the songs"""
     bars = get_bars(songs_data)
-
-    # This tells GHMM every possible value that it will be seeing
-    alphabet = ghmm.Alphabet(list(set(bars)))
-    alphaLen = len(alphabet)
-
-    # The sequence of bars gathered from the music
-    train_seq = ghmm.EmissionSequence(alphabet, bars) 
- 
-    # Initiaize the probabilities of transitioning from each state to each other
-    # state. There is probably a better way to do this, but this is nice and simple.
-    trans_prob = 1.0 / (alphaLen)
-    trans = [[trans_prob for row in range(alphaLen)] for col in range(alphaLen)]
-    
-    # Initialize the probabilities of seeing each output from each state.
-    # Again, there is probably a better way to do this, but this is simple.
-    emiss_prob = 1.0 / (alphaLen)
-    emiss = [[emiss_prob for row in range(alphaLen)] for col in range(alphaLen)]
-    
-    # Some grease to get GHMM to work
-    pi = [1.0/alphaLen] * alphaLen 
-    
-    # Generate the model of the data
-    m = ghmm.HMMFromMatrices(alphabet, ghmm.DiscreteDistribution(alphabet), trans, emiss, pi)
-    
-    # Train the model based on the training sequence
-    m.baumWelch(train_seq)
-   
+    trainer = Trainer(bars)
+    m, alphabet = trainer.train()
     return (m, alphabet)
 
