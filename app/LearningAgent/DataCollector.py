@@ -5,16 +5,25 @@ import json, requests
 
 config.ECHO_NEST_API_KEY=ECHO_NEST_API_KEY
 
+def get_genres():
+    genres = []
+    url = 'http://developer.echonest.com/api/v4/genre/list?api_key=' + ECHO_NEST_API_KEY + '&format=json'
+
+    resp = requests.get(url=url)
+    data = json.loads(resp.content)
+    genres = data['response']['genres']
+    return [genre.values()[0].encode('utf-8') for genre in genres]
+
 def collect_data(song_ids):
     """Input: a list of song IDs
        Output: a list of SongData objects fulled with useful information about the songs"""
 
     song_data = []
-
+    print song_ids
     for song_id in song_ids:
         this_song = song.profile(song_id)
         summary = this_song[0].audio_summary
-    
+        print summary
         url  = summary['analysis_url']
         musical_events = dict(
             sects='sections',

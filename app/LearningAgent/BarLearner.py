@@ -5,6 +5,7 @@ from SongData import SongData
 from Trainer import Trainer
 
 class BarLearner(threading.Thread):
+    # TODO: This is just the setup.  We still need to use as thread.
     def __init__(self, thread_id, name, counter, songs_data):
         threading.Thread.__init__(self)
         self.thread_id = thread_id
