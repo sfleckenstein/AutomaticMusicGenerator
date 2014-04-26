@@ -3,6 +3,7 @@ from SongData import SongData
 from Trainer import Trainer
 
 class DurationLearner(threading.Thread):
+    # TODO: This is just the setup.  We still need to use this as a thread
     def __init__(self, thread_id, name, counter, songs_data, tempo):
         threading.Thread.__init__(self)
         self.thread_id = thread_id

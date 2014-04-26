@@ -5,6 +5,7 @@ from SongData import SongData
 from Trainer import Trainer
 
 class NoteLearner(threading.Thread):
+    # TODO: This is just the setup, we need to actually use this as thread
     def __init__(self, thread_id, name, counter, songs_data, queue):
         threading.Thread.__init__(self)
         self.thread_id = thread_id
