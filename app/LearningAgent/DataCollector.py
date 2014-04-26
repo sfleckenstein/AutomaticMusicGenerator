@@ -19,11 +19,11 @@ def collect_data(song_ids):
        Output: a list of SongData objects fulled with useful information about the songs"""
 
     song_data = []
-
+    print song_ids
     for song_id in song_ids:
         this_song = song.profile(song_id)
         summary = this_song[0].audio_summary
-    
+        print summary
         url  = summary['analysis_url']
         musical_events = dict(
             sects='sections',
