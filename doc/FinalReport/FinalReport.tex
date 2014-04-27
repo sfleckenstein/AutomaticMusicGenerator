@@ -71,9 +71,6 @@ The learning agent utilizes the GHMM library to perform the required machine lea
 \subsection{Composition Agent}
 The composition agent receives the bar, note, and duration models from the learning agent. It then creates a sequence of bars from the bar model. For each bar, it creates a sequence of notes and durations and writes them to a .mid file.
 
-\subsection{User Interface}
-The user interface was previously implemented as a web application; however this did not make sense with the type of application this project focused on developing (i.e. more of a research tool). The user interface is now implemented as a cross-platform desktop application using the PyQt application framework. This framework was chosen because it provides a cross platform experience and is highly customizable, primarily through subclassing of many of its widgets. The application workflow remains the same, except for the removal of user rated sound clips. First, the user chooses a genre, maximum tempo, minimum tempo, and key signature.  The user clicks the compose button that initiates the learning and the composing.  Finally, the song is loaded for the user to play.
-
 \section{Software Design}
 \subsection{User Interface}
  \begin{enumerate}
@@ -127,7 +124,13 @@ The work division was as follows: Sam was responsible for the design and impleme
 The management plan was quite effective through the project. Enough time as allocated for each part of the project. Communication between team members went well. Problems were resolved quickly, and large design decisions were made without much trouble. The proposed work was all completed in good time, with time for revisions and improvements.
 
 \section{User Interface}
+The user interface was previously implemented as a web application; however this did not make sense with the type of application this project focused on developing (i.e. more of a research tool). The user interface is now implemented as a cross-platform desktop application using the PyQt application framework. This framework was chosen because it provides a cross platform experience and is highly customizable, primarily through subclassing of many of its widgets. The application workflow remains the same, except for the removal of user rated sound clips, and the new user interface is shown below:
 
+\begin{figure}[H]
+\centerline{\includegraphics[width=7cm]{gui.png}}
+\end{figure}
+
+First, the user chooses a genre, maximum tempo, minimum tempo, and key signature.  The user clicks the compose button that initiates the learning and the composing.  Finally, the song is loaded for the user to play. 
 
 \section{Testing and Evaluation}
 The testing done during the project was primarily manual. Each of the developers was responsible for testing each of the components during development to ensure smooth integration.
