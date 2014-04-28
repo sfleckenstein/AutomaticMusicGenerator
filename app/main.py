@@ -69,7 +69,7 @@ class MainWindow(QtGui.QWidget):
         # Add a pause button
         pause_btn = QtGui.QPushButton('Pause', self)
         pause_btn.resize(pause_btn.sizeHint())
-        # links the creation to the clicking of stop
+        # links the creation to the clicking of pause
         pause_btn.clicked.connect(self.pause)
         grid.addWidget(pause_btn, 8, 1)
         
