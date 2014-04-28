@@ -10,6 +10,7 @@ class MainWindow(QtGui.QWidget):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.init_ui()
+        self.paused = True
 
     def init_ui(self):
         genre_label = QtGui.QLabel('Genre: ')
@@ -78,7 +79,6 @@ class MainWindow(QtGui.QWidget):
         channels = 2
         _buffer = 1024
         pygame.mixer.init(freq, bitsize, channels, _buffer)
-        pygame.mixer.music.set_volume(0.8)
 
         self.setLayout(grid)
         self.setGeometry(300, 300, 350, 300)
@@ -118,13 +118,16 @@ class MainWindow(QtGui.QWidget):
             return
 
     def play(self):
-        clock = pygame.time.Clock()
         pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
-            clock.tick(30)
+        self.paused = not self.paused
 
     def pause(self):
-        pygame.mixer.music.pause()
+        if self.paused:
+            pygame.mixer.music.unpause()
+            self.paused = not self.paused
+        else:
+            pygame.mixer.music.pause()
+            self.paused = not self.paused
 
 def main():
     app = QtGui.QApplication(sys.argv)
